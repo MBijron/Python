@@ -23,7 +23,7 @@ class Regex:
         matched_files = []
         for location, subdirs, files in os.walk(path):
             for name in files:
-                if Regex.match_file(pathlib.PurePath(location, name), pattern) and Regex.match_string(name, filter):
+                if Regex.match_string(name, filter) and Regex.match_file(pathlib.PurePath(location, name), pattern):
                     matched_files.append(pathlib.PurePath(location, name).__str__())
         return matched_files
 
@@ -36,3 +36,10 @@ class Regex:
         text = File.readtext(path)
         text = Regex.replace_string(text, pattern, replacement)
         File.writetext(path, text)
+
+    @staticmethod
+    def replace_files(path, pattern, filter='.*'):
+        for location, subdirs, files in os.walk(path):
+            for name in files:
+                if Regex.match_string(name, filter):
+                    Regex.replace_file(pathlib.PurePath(location, name), pattern)

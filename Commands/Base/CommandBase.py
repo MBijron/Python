@@ -43,13 +43,13 @@ class CommandBase:
 
     def run(self, args):
         self.args = args
-        if ((self.minArgNr != None and len(self.args) < self.minArgNr + 1) or (
-                self.maxArgNr != None and len(self.args) > self.maxArgNr + 1)):
-            raise Exception('Wrong number of arguments given\n' + 'usage: ' + self.usage)
         if (len(self.args) >= 2 and self.args[1] == "/help"):
             print(self.desc)
             print('usage: ' + self.usage)
             sys.exit(1)
+        if ((self.minArgNr != None and len(self.args) < self.minArgNr + 1) or (
+                self.maxArgNr != None and len(self.args) > self.maxArgNr + 1)):
+            raise Exception('Wrong number of arguments given\n' + 'usage: ' + self.usage)
         if (len(self.types) > 0):
             self.checkTypes()
         self.main()
