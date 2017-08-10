@@ -1,0 +1,15 @@
+from Commands.Base.CommandBase import CommandBase
+
+
+class [NAME]Command (CommandBase):
+    desc = '[DESCRIPTION]'
+    usage = '[NAME]'
+    minArgNr = 0
+    maxArgNr = 0
+    types = {}
+
+    def main(self):
+        pass
+
+
+command = [NAME]Command (__name__ == "__main__")

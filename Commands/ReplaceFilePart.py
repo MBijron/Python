@@ -14,7 +14,7 @@ class ReplaceFilePart(CommandBase.CommandBase):
     
     @staticmethod
     def replaceFilePart(location, original, replacement):
-        os.rename(location, location.__str__().replace(original, replacement))
+        os.rename(location, location.__str__().replace_string(original, replacement))
     
     @staticmethod
     def replaceFilePartsInPath(location, original, replacement):

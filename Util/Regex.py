@@ -4,7 +4,7 @@ import re
 from IO.File import File
 
 class Regex:
-    
+
     @staticmethod
     def match_string(string, pattern):
         regex = re.compile(pattern)
@@ -26,3 +26,13 @@ class Regex:
                 if Regex.match_file(pathlib.PurePath(location, name), pattern) and Regex.match_string(name, filter):
                     matched_files.append(pathlib.PurePath(location, name).__str__())
         return matched_files
+
+    @staticmethod
+    def replace_string(string, pattern, replacement):
+        return re.sub(pattern, replacement, string)
+
+    @staticmethod
+    def replace_file(path, pattern, replacement):
+        text = File.readtext(path)
+        text = Regex.replace_string(text, pattern, replacement)
+        File.writetext(path, text)
