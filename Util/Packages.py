@@ -5,10 +5,9 @@ import site
 class Packages:
     @staticmethod
     def install(package):
+        # TODO: write unit test
         try:
             importlib.import_module(package)
         except ImportError:
             pip.main(['install', package])
             importlib.reload(site)
-        #finally:
-            #globals()[package] = importlib.import_module(package)

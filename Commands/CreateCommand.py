@@ -13,6 +13,7 @@ class CreateCommandCommand (CommandBase):
     types = {}
 
     def main(self):
+        # TODO: write unit test
         name = self.args[1]
         description = self.args[2]
 

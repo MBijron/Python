@@ -7,6 +7,7 @@ import ctypes
 class Admin:
     @staticmethod
     def isUserAdmin():
+        # TODO: write unit test
 
         if os.name == 'nt':
 
@@ -24,6 +25,7 @@ class Admin:
 
     @staticmethod
     def runAsAdmin(cmdLine=None, wait=True):
+        # TODO: write unit test
 
         if os.name != 'nt':
             raise RuntimeError("This function is only implemented on Windows.")

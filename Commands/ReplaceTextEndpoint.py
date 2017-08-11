@@ -12,6 +12,7 @@ class ReplaceTextEndpoint(CommandBase.CommandBase):
     
     @staticmethod
     def replaceTextInEndpointFile(location, original, replacement):
+        # TODO: write unit test
         command = ReplaceText.ReplaceText(False)
         command.replaceTextInPath(location, original, replacement)
         original = original[0].lower() + original[1:]
@@ -19,6 +20,7 @@ class ReplaceTextEndpoint(CommandBase.CommandBase):
         command.replaceTextInPath(location, original, replacement)
 
     def main(self):
+        # TODO: write unit test
         location = self.args[1]
         original = self.args[2]
         replacement = self.args[3]

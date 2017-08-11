@@ -14,6 +14,7 @@ class DuplicateEndpoint(CommandBase.CommandBase):
     types = {1: CommandBase.AtribType.PATH}
 
     def main(self):
+        # TODO: write unit test
         location = self.args[1]
         new = self.args[2]
         original = self.args[3]

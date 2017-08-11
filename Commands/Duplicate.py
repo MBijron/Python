@@ -12,10 +12,12 @@ class Duplicate(CommandBase.CommandBase):
 
     @staticmethod
     def DuplicateFile(path, new):
+        # TODO: write unit test
         shutil.copyfile(path, new)
 
     @staticmethod
     def DuplicateFolder(path, new):
+        # TODO: write unit test
         shutil.copytree(path, new)
 
     @staticmethod
@@ -26,6 +28,7 @@ class Duplicate(CommandBase.CommandBase):
             Duplicate.DuplicateFolder(path, new)
 
     def main(self):
+        # TODO: write unit test
         location = self.args[1]
         new = self.args[2]
 

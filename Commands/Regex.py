@@ -16,6 +16,7 @@ class RegexCommand(CommandBase):
             print(result)
 
     def main(self):
+        # TODO: write unit test
         location = self.args[1]
         pattern = self.args[2]
         if(self.checkAtrib(location, AtribType.PATH) == AtribType.FOLDER):
