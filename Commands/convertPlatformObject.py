@@ -1,6 +1,6 @@
 import re
 
-path = r"C:\GIT\haywork_platform\VenumBV\20_DomainModel\Implementations\Opdracht\ObjectType\ObjectType.cs"
+path = r"" #the path to the object to convert
 regex = "public\s*([\w<>?\.]+)\s*([\w<>?\.]+)\s*{\s*get"
 
 SearchFunction = re.compile(regex)
