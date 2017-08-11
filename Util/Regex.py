@@ -7,7 +7,6 @@ class Regex:
 
     @staticmethod
     def match_string(string, pattern):
-        # TODO: write unit test
         regex = re.compile(pattern)
         if regex.search(string):
             return True
@@ -16,13 +15,11 @@ class Regex:
 
     @staticmethod
     def match_file(path, pattern):
-        # TODO: write unit test
         text = File.readtext(path)
         return Regex.match_string(text, pattern)
 
     @staticmethod
     def match_files(path, pattern, filter='.*'):
-        # TODO: write unit test
         matched_files = []
         for location, subdirs, files in os.walk(path):
             for name in files:
@@ -32,20 +29,17 @@ class Regex:
 
     @staticmethod
     def replace_string(string, pattern, replacement):
-        # TODO: write unit test
         return re.sub(pattern, replacement, string)
 
     @staticmethod
     def replace_file(path, pattern, replacement):
-        # TODO: write unit test
         text = File.readtext(path)
         text = Regex.replace_string(text, pattern, replacement)
         File.writetext(path, text)
 
     @staticmethod
-    def replace_files(path, pattern, filter='.*'):
-        # TODO: write unit test
+    def replace_files(path, pattern, replacement, filter='.*'):
         for location, subdirs, files in os.walk(path):
             for name in files:
                 if Regex.match_string(name, filter):
-                    Regex.replace_file(pathlib.PurePath(location, name), pattern)
+                    Regex.replace_file(pathlib.PurePath(location, name), pattern, replacement)
