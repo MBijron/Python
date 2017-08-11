@@ -7,7 +7,7 @@ from setuptools import setup, find_packages
 from Util.Packages import Packages
 #needed for windows reasons
 #print("-    Installing and importing python library pypiwin32")
-#Packages.install('pypiwin32')
+Packages.install('pypiwin32')
 #from Windows.Admin import Admin
 from Windows.Environment import Environment
 
