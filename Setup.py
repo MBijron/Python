@@ -18,7 +18,7 @@ from Windows.Admin import Admin
 from Windows.Environment import Environment
 
 # the script needs admin to run
-if not(Admin.isUserAdmin()):
+if not(Admin.isUserAdmin() or is_setup):
     Admin.runAsAdmin()
     sys.exit(1)
 
