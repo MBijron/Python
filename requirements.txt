@@ -1,1 +1,2 @@
 pypiwin32==220
+python-docx==086

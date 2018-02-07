@@ -1,6 +1,8 @@
 import sys
 import pathlib
 from enum import Enum
+import datetime
+from Util.DateTimeUtil import DateTimeUtil
 
 
 class CommandBase:
@@ -34,12 +36,20 @@ class CommandBase:
                 return AtribType.FOLDER
             else:
                 raise Exception('The attribute should be a file or folder')
+        elif (type == AtribType.DATE):
+            if DateTimeUtil.is_date(atrib):
+                return type
+            else:
+                raise Exception('The attribute should be a date')
         else:
             raise Exception('The type to validate is not supported')
 
     def checkTypes(self):
         for key, value in self.types.items():
-            self.checkAtrib(self.args[key], value)
+            try:
+                self.checkAtrib(self.args[key], value)
+            except Exception as e:
+                raise Exception('Attribute "' + self.args[key] + '" is of a wrong type: ' + str(e))
 
     def run(self, args):
         self.args = args
@@ -63,3 +73,4 @@ class AtribType(Enum):
     FILE = 1
     FOLDER = 2
     PATH = 3
+    DATE = 4

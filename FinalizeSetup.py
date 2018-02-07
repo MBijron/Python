@@ -6,6 +6,7 @@ import traceback
 print("-    Installing and importing python library pypiwin32")
 from Util.Packages import Packages
 Packages.install('pypiwin32')
+Packages.install('python-docx')
 
 from Windows.Admin import Admin
 from Windows.Environment import Environment
@@ -32,7 +33,7 @@ def add_dir_to_path(name, dir):
         else:
             print("-        Creating to environment varialbe '" + name + "'")
             Environment.set_environment_variable(name, dir)
-    except Exception as e:
+    except:
         print("-        Something went wrong with the setup")
         print("-        Please send the following traceback of the error to a developer:")
         traceback.print_exc()
