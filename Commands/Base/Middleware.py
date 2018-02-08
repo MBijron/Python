@@ -1,5 +1,11 @@
 from Commands.Middleware.DateMiddleware import DateMiddleware
+from Commands.Middleware.FileMiddleware import FileMiddleware
+from Commands.Middleware.FolderMiddleware import FolderMiddleware
+from Commands.Middleware.PathMiddleware import PathMiddleware
 
 
 class Middleware:
-    PATH = DateMiddleware()
+    DATE = DateMiddleware()
+    FILE = FileMiddleware()
+    FOLDER = FolderMiddleware()
+    PATH = PathMiddleware()

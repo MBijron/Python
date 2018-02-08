@@ -1,4 +1,4 @@
-from Commands.Base.AttributeType import AttributeType
+from Commands.Base.Middleware import Middleware
 from Commands.Base.CommandBase import CommandBase
 from Util.DateTimeUtil import DateTimeUtil
 
@@ -9,8 +9,8 @@ class CreateLogbookCommand(CommandBase):
     minArgNr = 2
     maxArgNr = 2
     types = {
-        1: AttributeType.DATE,
-        2: AttributeType.DATE
+        1: Middleware.DATE,
+        2: Middleware.DATE
     }
 
     def main(self):

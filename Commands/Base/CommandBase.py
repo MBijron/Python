@@ -1,9 +1,4 @@
-import pathlib
-import inspect
 import sys
-
-from Commands.Base.AttributeType import AttributeType
-from Util.DateTimeUtil import DateTimeUtil
 from Commands.Middleware.MiddlewareBase import MiddlewareBase
 
 
@@ -25,23 +20,12 @@ class CommandBase:
         except Exception as e:
             raise e
 
-        path = pathlib.Path(attribute)
-        elif middleware == AttributeType.FOLDER:
-            if path.is_dir():
-                return middleware
-            else:
-                raise Exception('The attribute should be a folder')
-        elif middleware == AttributeType.PATH:
-            if path.is_file():
-                return AttributeType.FILE
-            elif path.is_dir():
-                return AttributeType.FOLDER
-            else:
-                raise Exception('The attribute should be a file or folder')
+    def _get_argument(self, index):
+        if(self.types.contain)
 
     def __check_types(self):
         for arg_index, middleware in self.types.items():
-            if inspect.isclass(MiddlewareBase):
+            if isinstance(middleware, MiddlewareBase):
                 try:
                     self.check_attribute(self.__args[arg_index], middleware)
                 except Exception as e:

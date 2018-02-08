@@ -3,15 +3,15 @@ import pathlib
 from Commands.Middleware.MiddlewareBase import MiddlewareBase
 
 
-class FolderMiddleware(MiddlewareBase):
-    __type_name = "Folder"
+class PathMiddleware(MiddlewareBase):
+    __type_name = "Path"
 
     def get_type_name(self):
         return self.__type_name
 
     def check(self, input_variable):
         path = pathlib.Path(input_variable)
-        if path.is_dir():
+        if path.is_dir() or path.is_file():
             return True
 
     def process(self, input_variable):
