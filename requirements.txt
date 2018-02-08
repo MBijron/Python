@@ -1,2 +1,3 @@
+win32gui
 pypiwin32==220
-python-docx==086
+python-docx==0.8.6

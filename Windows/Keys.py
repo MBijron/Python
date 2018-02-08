@@ -3,6 +3,6 @@ import win32api
 
 class Keys:
     @staticmethod
-    def sendkey(keycode):
-        hwcode = win32api.MapVirtualKey(keycode._value_, 0)
-        win32api.keybd_event(keycode._value_, hwcode)
+    def send_key(key_code):
+        hwcode = win32api.MapVirtualKey(key_code._value_, 0)
+        win32api.keybd_event(key_code._value_, hwcode)

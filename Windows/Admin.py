@@ -1,16 +1,24 @@
-import sys, os, traceback, types
-import win32api, win32con, win32event, win32process
-from win32com.shell.shell import ShellExecuteEx
-from win32com.shell import shellcon
 import ctypes
+import os
+import sys
+import traceback
+import types
+
+import win32con
+import win32event
+import win32process
+from win32com.shell import shellcon
+from win32com.shell.shell import ShellExecuteEx
+
 
 class Admin:
     @staticmethod
-    def isUserAdmin():
+    def is_user_admin():
         # TODO: write unit test
 
         if os.name == 'nt':
 
+            # noinspection PyBroadException
             try:
                 return ctypes.windll.shell32.IsUserAnAdmin()
             except:
@@ -24,7 +32,7 @@ class Admin:
             raise RuntimeError("Unsupported operating system for this module: %s" % (os.name,))
 
     @staticmethod
-    def runAsAdmin(cmdLine=None, wait=True):
+    def run_as_admin(cmd_line=None, wait=True):
         # TODO: write unit test
 
         if os.name != 'nt':
@@ -32,17 +40,16 @@ class Admin:
 
         python_exe = sys.executable
 
-        if cmdLine is None:
-            cmdLine = [python_exe] + sys.argv
-        elif type(cmdLine) not in (types.TupleType,types.ListType):
+        if cmd_line is None:
+            cmd_line = [python_exe] + sys.argv
+        elif type(cmd_line) not in (types.TupleType, types.ListType):
             raise ValueError("cmdLine is not a sequence.")
-        cmd = '"%s"' % (cmdLine[0],)
+        cmd = '"%s"' % (cmd_line[0],)
         # XXX TODO: isn't there a function or something we can call to massage command line params?
-        params = " ".join(['"%s"' % (x,) for x in cmdLine[1:]])
-        cmdDir = ''
-        showCmd = win32con.SW_SHOWNORMAL
-        #showCmd = win32con.SW_HIDE
-        lpVerb = 'runas'  # causes UAC elevation prompt.
+        params = " ".join(['"%s"' % (x,) for x in cmd_line[1:]])
+        show_cmd = win32con.SW_SHOWNORMAL
+        # showCmd = win32con.SW_HIDE
+        lp_verb = 'runas'  # causes UAC elevation prompt.
 
         # print "Running", cmd, params
 
@@ -52,17 +59,17 @@ class Admin:
 
         # procHandle = win32api.ShellExecute(0, lpVerb, cmd, params, cmdDir, showCmd)
 
-        procInfo = ShellExecuteEx(nShow=showCmd,
-                                  fMask=shellcon.SEE_MASK_NOCLOSEPROCESS,
-                                  lpVerb=lpVerb,
-                                  lpFile=cmd,
-                                  lpParameters=params)
+        proc_info = ShellExecuteEx(nShow=show_cmd,
+                                   fMask=shellcon.SEE_MASK_NOCLOSEPROCESS,
+                                   lpVerb=lp_verb,
+                                   lpFile=cmd,
+                                   lpParameters=params)
 
         if wait:
-            procHandle = procInfo['hProcess']
-            obj = win32event.WaitForSingleObject(procHandle, win32event.INFINITE)
-            rc = win32process.GetExitCodeProcess(procHandle)
-            #print "Process handle %s returned code %s" % (procHandle, rc)
+            proc_handle = proc_info['hProcess']
+            obj = win32event.WaitForSingleObject(proc_handle, win32event.INFINITE)
+            rc = win32process.GetExitCodeProcess(proc_handle)
+            # print "Process handle %s returned code %s" % (procHandle, rc)
         else:
             rc = None
 

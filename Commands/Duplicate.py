@@ -1,38 +1,39 @@
 import shutil
 
-from Commands.Base import CommandBase
+from Commands.Base.CommandBase import CommandBase
+from Commands.Base.CommandBase import AttributeType
 
 
-class Duplicate(CommandBase.CommandBase):
+class Duplicate(CommandBase):
     desc = 'Duplicate a file or folder'
     usage = 'DuplicateFile [file/folder] [new name]'
     minArgNr = 2
     maxArgNr = 2
-    types = {1: CommandBase.AtribType.PATH}
+    types = {1: AttributeType.PATH}
 
     @staticmethod
-    def DuplicateFile(path, new):
+    def _duplicate_file(path, new):
         # TODO: write unit test
         shutil.copyfile(path, new)
 
     @staticmethod
-    def DuplicateFolder(path, new):
+    def _duplicate_folder(path, new):
         # TODO: write unit test
         shutil.copytree(path, new)
 
     @staticmethod
-    def DuplicatePath(path, new):
-        if (Duplicate.checkAtrib(path, CommandBase.AtribType.PATH) == CommandBase.AtribType.FILE):
-            Duplicate.DuplicateFile(path, new)
+    def duplicate_path(path, new):
+        if Duplicate.check_attribute(path, AttributeType.PATH) == AttributeType.FILE:
+            Duplicate._duplicate_file(path, new)
         else:
-            Duplicate.DuplicateFolder(path, new)
+            Duplicate._duplicate_folder(path, new)
 
     def main(self):
         # TODO: write unit test
         location = self.args[1]
         new = self.args[2]
 
-        self.DuplicatePath(location, new)
+        self.duplicate_path(location, new)
 
 
 command = Duplicate(__name__ == "__main__")

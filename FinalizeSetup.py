@@ -6,14 +6,15 @@ import traceback
 print("-    Installing and importing python library pypiwin32")
 from Util.Packages import Packages
 Packages.install('pypiwin32')
+Packages.install('win32gui')
 Packages.install('python-docx')
 
 from Windows.Admin import Admin
 from Windows.Environment import Environment
 
 # the script needs admin to run
-if not(Admin.isUserAdmin()):
-    Admin.runAsAdmin()
+if not(Admin.is_user_admin()):
+    Admin.run_as_admin()
     sys.exit(1)
 
 def add_dir_to_path(name, dir):
@@ -39,7 +40,7 @@ def add_dir_to_path(name, dir):
         traceback.print_exc()
 
 #print(Environment.get_environment_variable("Path"))
-install_path = Path.scriptpath()
+install_path = Path.get_script_path()
 add_dir_to_path("PYTHONPATH", install_path)
 add_dir_to_path("PATH", Path.combine(install_path, "Commands"))
 add_dir_to_path("PATHEXT", ".PY")

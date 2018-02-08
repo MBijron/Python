@@ -3,6 +3,7 @@ import pathlib
 import re
 from IO.File import File
 
+
 class Regex:
 
     @staticmethod
@@ -15,13 +16,13 @@ class Regex:
 
     @staticmethod
     def match_file(path, pattern):
-        text = File.readtext(path)
+        text = File.read_text(path)
         return Regex.match_string(text, pattern)
 
     @staticmethod
     def match_files(path, pattern, filter='.*'):
         matched_files = []
-        for location, subdirs, files in os.walk(path):
+        for location, sub_dirs, files in os.walk(path):
             for name in files:
                 if Regex.match_string(name, filter) and Regex.match_file(pathlib.PurePath(location, name), pattern):
                     matched_files.append(pathlib.PurePath(location, name).__str__())
@@ -33,13 +34,13 @@ class Regex:
 
     @staticmethod
     def replace_file(path, pattern, replacement):
-        text = File.readtext(path)
+        text = File.read_text(path)
         text = Regex.replace_string(text, pattern, replacement)
-        File.writetext(path, text)
+        File.write_text(path, text)
 
     @staticmethod
     def replace_files(path, pattern, replacement, filter='.*'):
-        for location, subdirs, files in os.walk(path):
+        for location, sub_dirs, files in os.walk(path):
             for name in files:
                 if Regex.match_string(name, filter):
                     Regex.replace_file(pathlib.PurePath(location, name), pattern, replacement)

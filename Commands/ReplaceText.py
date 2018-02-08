@@ -1,35 +1,37 @@
 import pathlib
 import os
 
-from Commands.Base import CommandBase
+from Commands.Base.CommandBase import CommandBase
+from Commands.Base.CommandBase import AttributeType
 
 
-class ReplaceText(CommandBase.CommandBase):
+class ReplaceText(CommandBase):
     args = []
     desc = 'convert string in file to another string'
     usage = 'ReplaceTextInFile.py [filename/directory] [original string] [replacement string]'
     minArgNr = 3
     maxArgNr = 3
-    types = {1: CommandBase.AtribType.PATH}
-    
-    @staticmethod
-    def replaceTextInFile(location, original, replacement):
-        # TODO: write unit test
-        with open(location) as f:
-            newText = f.read().replace(original, replacement)
-        with open(location, 'w') as f:
-            f.write(newText)
+    types = {1: AttributeType.PATH}
 
     @staticmethod
-    def replaceTextInPath(location, original, replacement):
+    def _replace_text_in_file(location, original, replacement):
+        # TODO: write unit test
+        with open(location) as f:
+            new_text = f.read().replace(original, replacement)
+        with open(location, 'w') as f:
+            f.write(new_text)
+
+    @staticmethod
+    def replace_text_in_path(location, original, replacement):
         # TODO: write unit test
         location = pathlib.Path(location)
-        if(location.is_file()):
-            ReplaceText.replaceTextInFile(location, original, replacement)
-        elif(location.is_dir()):
-            for path, subdirs, files in os.walk(location):
+        if location.is_file():
+            ReplaceText._replace_text_in_file(location, original, replacement)
+        elif location.is_dir():
+            # noinspection PyTypeChecker
+            for path, sub_dirs, files in os.walk(location):
                 for name in files:
-                    ReplaceText.replaceTextInFile(pathlib.PurePath(path, name), original, replacement)
+                    ReplaceText._replace_text_in_file(pathlib.PurePath(path, name), original, replacement)
         else:
             raise Exception('The first argument should be a file or directory')
 
@@ -38,7 +40,8 @@ class ReplaceText(CommandBase.CommandBase):
         location = self.args[1]
         original = self.args[2]
         replacement = self.args[3]
-        
-        self.replaceTextInPath(location, original, replacement)
-          
+
+        self.replace_text_in_path(location, original, replacement)
+
+
 command = ReplaceText(__name__ == "__main__")

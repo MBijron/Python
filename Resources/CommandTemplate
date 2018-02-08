@@ -1,4 +1,5 @@
 from Commands.Base.CommandBase import CommandBase
+from Commands.Base.CommandBase import AttributeType
 
 
 class [NAME]Command (CommandBase):

@@ -1,5 +1,8 @@
+import os
+import win32con
+import win32gui
 from winreg import *
-import os, sys, win32gui, win32con
+
 
 class Environment:
 
@@ -11,7 +14,7 @@ class Environment:
         for i in range(1024):
             try:
                 n, v, t = EnumValue(key, i)
-                if (n.lower() == name.lower()):
+                if n.lower() == name.lower():
                     return v
             except EnvironmentError:
                 break
@@ -25,7 +28,7 @@ class Environment:
         for i in range(1024):
             try:
                 n, v, t = EnumValue(key, i)
-                if(n.lower() == name.lower()):
+                if n.lower() == name.lower():
                     return True
             except EnvironmentError:
                 break

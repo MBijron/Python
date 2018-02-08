@@ -1,6 +1,6 @@
 import re
 
-path = r"" #the path to the object to convert
+path = r""  # the path to the object to convert
 regex = "public\s*([\w<>?\.]+)\s*([\w<>?\.]+)\s*{\s*get"
 
 SearchFunction = re.compile(regex)

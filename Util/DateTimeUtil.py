@@ -1,7 +1,7 @@
 import datetime
 
-class DateTimeUtil:
 
+class DateTimeUtil:
     date_format = '%d-%m-%Y'
 
     @staticmethod
@@ -17,12 +17,12 @@ class DateTimeUtil:
         return datetime.datetime.strptime(string, DateTimeUtil.date_format)
 
     @staticmethod
-    def get_range(fromDate, toDate):
-        rangeArray = []
-        dd = [fromDate + datetime.timedelta(days=x) for x in range((toDate-fromDate).days + 1)]
+    def get_range(from_date, to_date):
+        range_array = []
+        dd = [from_date + datetime.timedelta(days=x) for x in range((to_date - from_date).days + 1)]
         for d in dd:
-            rangeArray.append(d)
-        return rangeArray
+            range_array.append(d)
+        return range_array
 
     @staticmethod
     def is_weekday(date):

@@ -5,16 +5,16 @@ from IO.File import File
 
 class MyTestCase(unittest.TestCase):
     def test_readtext(self):
-        self.assertEqual(File.readtext('testResources\\FileTest.txt'), 'Contents Of File\nSecond Line Of Content')
+        self.assertEqual(File.read_text('testResources\\FileTest.txt'), 'Contents Of File\nSecond Line Of Content')
 
     def test_readlines(self):
-        self.assertEqual(File.readlines('testResources\\FileTest.txt'), [ 'Contents Of File\n', 'Second Line Of Content' ])
+        self.assertEqual(File.read_lines('testResources\\FileTest.txt'), ['Contents Of File\n', 'Second Line Of Content'])
 
     def test_writetext(self):
-        File.writetext('testResources\\FileTest.txt', "Nothing");
-        self.assertEqual(File.readtext('testResources\\FileTest.txt'), "Nothing")
-        File.writetext('testResources\\FileTest.txt', 'Contents Of File\nSecond Line Of Content');
-        self.assertEqual(File.readtext('testResources\\FileTest.txt'), 'Contents Of File\nSecond Line Of Content')
+        File.write_text('testResources\\FileTest.txt', "Nothing");
+        self.assertEqual(File.read_text('testResources\\FileTest.txt'), "Nothing")
+        File.write_text('testResources\\FileTest.txt', 'Contents Of File\nSecond Line Of Content');
+        self.assertEqual(File.read_text('testResources\\FileTest.txt'), 'Contents Of File\nSecond Line Of Content')
         pass
 
     def test_copy(self):

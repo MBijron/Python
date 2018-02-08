@@ -1,26 +1,26 @@
-import shutil
 import os
-import sys
+import shutil
+
 
 class File:
     @staticmethod
-    def readtext(path):
+    def read_text(path):
         with open(path, 'r', encoding='iso-8859-1') as file:
             return file.read()
 
     @staticmethod
-    def readlines(path):
+    def read_lines(path):
         with open(path, 'r', encoding='iso-8859-1') as file:
             return file.readlines()
 
     @staticmethod
-    def writetext(path, text):
+    def write_text(path, text):
         with open(path, 'w') as file:
-            file.write(text);
+            file.write(text)
 
     @staticmethod
-    def copy(source, dest):
-        shutil.copyfile(source, dest)
+    def copy(source, destination):
+        shutil.copyfile(source, destination)
 
     @staticmethod
     def exists(file):

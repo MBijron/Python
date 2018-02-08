@@ -5,22 +5,22 @@ import sys
 
 class Path:
     @staticmethod
-    def absolutepath(file):
+    def get_absolute_path(file):
         # TODO: write unit test
         return os.path.abspath(file)
 
     @staticmethod
-    def workdir():
+    def get_working_directory():
         # TODO: write unit test
         return os.getcwd()
 
     @staticmethod
-    def scriptpath():
+    def get_script_path():
         # TODO: write unit test
         return os.path.dirname(os.path.realpath(sys.argv[0]))
 
     @staticmethod
-    def fromfile(file):
+    def get_file_path(file):
         # TODO: write unit test
         return os.path.dirname(os.path.realpath(file))
 
