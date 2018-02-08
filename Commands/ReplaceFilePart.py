@@ -2,11 +2,11 @@ import os
 import pathlib
 
 from Commands.Base.CommandBase import CommandBase
-from Commands.Base.CommandBase import AttributeType
+from Commands.Base.AttributeType import AttributeType
 
 
 class ReplaceFilePart(CommandBase):
-    args = []
+    __args = []
     desc = 'change part of the filename for given replacement'
     usage = 'RenameFilePart.py [filename/directory] [original string] [replacement string]'
     minArgNr = 3

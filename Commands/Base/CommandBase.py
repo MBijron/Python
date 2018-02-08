@@ -1,11 +1,14 @@
 import pathlib
+import inspect
 import sys
-from enum import Enum
+
+from Commands.Base.AttributeType import AttributeType
 from Util.DateTimeUtil import DateTimeUtil
+from Commands.Middleware.MiddlewareBase import MiddlewareBase
 
 
 class CommandBase:
-    args = []
+    __args = []
     desc = 'No description available for this command'
     usage = 'No Usage available for this command'
     minArgNr = None
@@ -13,63 +16,52 @@ class CommandBase:
     types = {}
 
     def main(self):
-        raise Exception('The commands main function is not implemented')
+        raise NotImplementedError
 
     @staticmethod
-    def check_attribute(attribute, type):
+    def check_attribute(attribute, middleware : MiddlewareBase):
+        try:
+            middleware.check(attribute)
+        except Exception as e:
+            raise e
+
         path = pathlib.Path(attribute)
-        if type == AttributeType.FILE:
-            if path.is_file:
-                return type
-            else:
-                raise Exception('The attribute should be a file')
-        elif type == AttributeType.FOLDER:
+        elif middleware == AttributeType.FOLDER:
             if path.is_dir():
-                return type
+                return middleware
             else:
                 raise Exception('The attribute should be a folder')
-        elif type == AttributeType.PATH:
+        elif middleware == AttributeType.PATH:
             if path.is_file():
                 return AttributeType.FILE
             elif path.is_dir():
                 return AttributeType.FOLDER
             else:
                 raise Exception('The attribute should be a file or folder')
-        elif type == AttributeType.DATE:
-            if DateTimeUtil.is_date(attribute):
-                return type
+
+    def __check_types(self):
+        for arg_index, middleware in self.types.items():
+            if inspect.isclass(MiddlewareBase):
+                try:
+                    self.check_attribute(self.__args[arg_index], middleware)
+                except Exception as e:
+                    raise Exception('Attribute "' + self.__args[arg_index] + '" is of a wrong type: ' + str(e))
             else:
-                raise Exception('The attribute should be a date')
-        else:
-            raise Exception('The type to validate is not supported')
+                raise Exception('The middleware for attribute "' + self.__args[arg_index] + '" is not of type MiddlewareBase')
 
-    def _check_types(self):
-        for key, value in self.types.items():
-            try:
-                self.check_attribute(self.args[key], value)
-            except Exception as e:
-                raise Exception('Attribute "' + self.args[key] + '" is of a wrong type: ' + str(e))
-
-    def run(self, args):
-        self.args = args
-        if len(self.args) >= 2 and self.args[1] == "/help":
+    def __run(self, args):
+        self.__args = args
+        if len(self.__args) >= 2 and self.__args[1] == "/help":
             print(self.desc)
             print('usage: ' + self.usage)
             sys.exit(1)
-        if ((self.minArgNr is not None and len(self.args) < self.minArgNr + 1) or (
-                self.maxArgNr is not None and len(self.args) > self.maxArgNr + 1)):
+        if ((self.minArgNr is not None and len(self.__args) < self.minArgNr + 1) or (
+                self.maxArgNr is not None and len(self.__args) > self.maxArgNr + 1)):
             raise Exception('Wrong number of arguments given\n' + 'usage: ' + self.usage)
         if len(self.types) > 0:
-            self._check_types()
+            self.__check_types()
         self.main()
 
     def __init__(self, run):
         if run:
-            self.run(sys.argv)
-
-
-class AttributeType(Enum):
-    FILE = 1
-    FOLDER = 2
-    PATH = 3
-    DATE = 4
+            self.__run(sys.argv)

@@ -2,12 +2,12 @@ from Commands.ReplaceFilePart import ReplaceFilePart
 from Commands.ReplaceTextEndpoint import ReplaceTextEndpoint
 
 from Commands.Base.CommandBase import CommandBase
-from Commands.Base.CommandBase import AttributeType
+from Commands.Base.AttributeType import AttributeType
 from Commands.Duplicate import Duplicate
 
 
 class DuplicateEndpoint(CommandBase):
-    args = []
+    __args = []
     desc = 'Duplicate an endpoint file or folder'
     usage = 'DuplicateEndpointFile [file/folder] [new name] [original name in text] [replacement name in text]'
     minArgNr = 4

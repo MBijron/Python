@@ -1,7 +1,7 @@
 import shutil
 
 from Commands.Base.CommandBase import CommandBase
-from Commands.Base.CommandBase import AttributeType
+from Commands.Base.AttributeType import AttributeType
 
 
 class Duplicate(CommandBase):
@@ -30,8 +30,8 @@ class Duplicate(CommandBase):
 
     def main(self):
         # TODO: write unit test
-        location = self.args[1]
-        new = self.args[2]
+        location = self.__args[1]
+        new = self.__args[2]
 
         self.duplicate_path(location, new)
 

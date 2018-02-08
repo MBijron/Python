@@ -1,4 +1,4 @@
-from Commands.Base.CommandBase import AttributeType
+from Commands.Base.AttributeType import AttributeType
 from Commands.Base.CommandBase import CommandBase
 from Util.DateTimeUtil import DateTimeUtil
 
@@ -14,8 +14,8 @@ class CreateLogbookCommand(CommandBase):
     }
 
     def main(self):
-        from_date = DateTimeUtil.to_date(self.args[1])
-        to_date = DateTimeUtil.to_date(self.args[2])
+        from_date = DateTimeUtil.to_date(self.__args[1])
+        to_date = DateTimeUtil.to_date(self.__args[2])
         date_range = DateTimeUtil.get_range(from_date, to_date)
         for date in date_range:
             if DateTimeUtil.is_weekday(date):

@@ -1,6 +1,6 @@
 from Commands import ReplaceText
 from Commands.Base.CommandBase import CommandBase
-from Commands.Base.CommandBase import AttributeType
+from Commands.Base.AttributeType import AttributeType
 
 
 class ReplaceTextEndpoint(CommandBase):
@@ -21,9 +21,9 @@ class ReplaceTextEndpoint(CommandBase):
 
     def main(self):
         # TODO: write unit test
-        location = self.args[1]
-        original = self.args[2]
-        replacement = self.args[3]
+        location = self.__args[1]
+        original = self.__args[2]
+        replacement = self.__args[3]
 
         self.replace_text_in_endpoint_file(location, original, replacement)
 

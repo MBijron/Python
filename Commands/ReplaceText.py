@@ -2,11 +2,11 @@ import pathlib
 import os
 
 from Commands.Base.CommandBase import CommandBase
-from Commands.Base.CommandBase import AttributeType
+from Commands.Base.AttributeType import AttributeType
 
 
 class ReplaceText(CommandBase):
-    args = []
+    __args = []
     desc = 'convert string in file to another string'
     usage = 'ReplaceTextInFile.py [filename/directory] [original string] [replacement string]'
     minArgNr = 3

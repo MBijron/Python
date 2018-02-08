@@ -1,6 +1,6 @@
 import os
 from Commands.Base.CommandBase import CommandBase
-from Commands.Base.CommandBase import AttributeType
+from Commands.Base.AttributeType import AttributeType
 
 
 class AddToPath(CommandBase):
@@ -24,7 +24,7 @@ class AddToPath(CommandBase):
 
     def main(self):
         # TODO: write unit test
-        folder = self.args[1]
+        folder = self.__args[1]
         self._add_folder_to_path(folder)
 
 
