@@ -4,7 +4,7 @@ import re
 
 class DescriptionInterpreter:
     _description_string = None
-    _class_chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ_";
+    _split_regex = r"[\s]+"
 
     def set_file(self, file):
         self._description_string = File.read_text(file)
@@ -13,21 +13,13 @@ class DescriptionInterpreter:
         self._description_string = text;
 
     def get_components(self):
-        print(re.split(r"[\s]+", self._description_string))
+        return re.split(self._split_regex, self._description_string)
 
-    def is_class_name(self, name):
-        for character in name:
-            if not self.is_class_char(character):
-                return False
-        return True
-
-    def is_class_char(self, character):
-        for allowed_char in self._class_chars:
-            if character is allowed_char:
-                return True
-        return False
+    def create_tokens(self, components):
+        pass
 
 
 interpreter = DescriptionInterpreter()
-interpreter.set_file(r"C:\Users\maurice\Dropbox\Documenten\Unified description pattern wiki.txt")
-interpreter.get_components();
+# interpreter.set_file(r"C:\Users\maurice\Dropbox\Documenten\Unified description pattern wiki.txt")
+interpreter.set_file(r"C:\Users\mauriceb\Documents\UDLWIKI.txt")
+interpreter.get_components()

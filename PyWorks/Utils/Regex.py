@@ -15,6 +15,13 @@ class Regex:
             return False
 
     @staticmethod
+    def find_in_string(string, pattern):
+        regex = re.compile(pattern)
+        result = regex.match(string)
+        if result:
+            return result.groups()
+
+    @staticmethod
     def match_file(path, pattern):
         text = File.read_text(path)
         return Regex.match_string(text, pattern)
