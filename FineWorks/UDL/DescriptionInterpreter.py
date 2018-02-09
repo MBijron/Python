@@ -1,5 +1,5 @@
 # coding=utf-8
-from FineWorks.UDL.Tokenizers import SettingTokenizer, ClassTokenizer, ContentsTokenizer
+from FineWorks.UDL.Tokenizers import SettingTokenizer, ClassTokenizer, ContentsTokenizer, TextTokenizer
 from FineWorks.UDL.Tokens import TokenBase
 from PyWorks.IO import File
 import re
@@ -30,12 +30,15 @@ class DescriptionInterpreter:
         contents_tokenizer = ContentsTokenizer()
         setting_tokenizer = SettingTokenizer()
         class_tokenizer = ClassTokenizer()
+        text_tokenizer = TextTokenizer()
         if contents_tokenizer.matches(self.slice_components(components, index, contents_tokenizer.get_requested_component_nr())):
             return contents_tokenizer.get_token()
         if setting_tokenizer.matches(self.slice_components(components, index, setting_tokenizer.get_requested_component_nr())):
             return setting_tokenizer.get_token()
         if class_tokenizer.matches(self.slice_components(components, index, class_tokenizer.get_requested_component_nr())):
             return class_tokenizer.get_token()
+        if text_tokenizer.matches(self.slice_components(components, index, text_tokenizer.get_requested_component_nr())):
+            return text_tokenizer.get_token()
         raise Exception("Wrong syntax at: " + (' '.join(components[index: index+7])+"..."))
 
     def slice_components(self, components: [], index, required_components):
