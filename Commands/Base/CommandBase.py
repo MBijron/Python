@@ -14,14 +14,21 @@ class CommandBase:
         raise NotImplementedError
 
     @staticmethod
-    def check_attribute(attribute, middleware : MiddlewareBase):
+    def check_attribute(attribute, middleware: MiddlewareBase):
         try:
             middleware.check(attribute)
         except Exception as e:
             raise e
 
-    def _get_argument(self, index):
-        if(self.types.contain)
+    def _get_argument(self, index, ignore_middleware=False):
+        test = len(self.__args)
+        if len(self.__args) > index:
+            if index in self.types and not ignore_middleware:
+                return self.types.get(self.__args[index])
+            else:
+                return self.__args[index]
+        else:
+            raise Exception("Argument index was out of range")
 
     def __check_types(self):
         for arg_index, middleware in self.types.items():
@@ -35,7 +42,7 @@ class CommandBase:
 
     def __run(self, args):
         self.__args = args
-        if len(self.__args) >= 2 and self.__args[1] == "/help":
+        if len(self.__args) >= 2 and (self.__args[1] == "/help" or self.__args[1] == "/?"):
             print(self.desc)
             print('usage: ' + self.usage)
             sys.exit(1)

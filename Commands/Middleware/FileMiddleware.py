@@ -1,6 +1,6 @@
 import pathlib
 
-from Commands.Middleware.MiddlewareBase import MiddlewareBase
+from Commands.Middleware import MiddlewareBase
 
 
 class FileMiddleware(MiddlewareBase):

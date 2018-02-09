@@ -1,51 +1,62 @@
-from IO.Path import Path
+"""@docstring
+"""
+from PyWorks.IO.Path import Path
 import site
 import importlib
 import sys
 import traceback
+
 print("-    Installing and importing python library pypiwin32")
-from Util.Packages import Packages
+from PyWorks.Utils import Packages
+
 Packages.install('pypiwin32')
 Packages.install('win32gui')
 Packages.install('python-docx')
 
-from Windows.Admin import Admin
-from Windows.Environment import Environment
+from PyWorks.Windows.Admin import Admin
+from PyWorks.Windows.Environment import Environment
 
 # the script needs admin to run
-if not(Admin.is_user_admin()):
+if not (Admin.is_user_admin()):
     Admin.run_as_admin()
     sys.exit(1)
 
-def add_dir_to_path(name, dir):
+
+def __add_dir_to_path(name, directory) -> None:
     print("-    Adding value to the environment variable '" + name + "'")
+    # noinspection PyBroadException
     try:
-        if(Environment.environment_variable_exists(name)):
-            print("-        Environment varialbe '" + name + "' allready exists")
-            pythonpath_value = Environment.get_environment_variable(name)
-            if(dir not in pythonpath_value):
-                print("-        Adding value to environment varialbe: '" + name + "'")
-                if not(pythonpath_value.endswith(";")):
-                    Environment.set_environment_variable(name, pythonpath_value + ";" + dir)
+        if Environment.environment_variable_exists(name):
+            print("-        Environment variable '" + name + "' already exists")
+            python_path_value = Environment.get_environment_variable(name)
+            if directory not in python_path_value:
+                print("-        Adding value to environment variable: '" + name + "'")
+                if not (python_path_value.endswith(";")):
+                    Environment.set_environment_variable(name, python_path_value + ";" + directory)
                 else:
-                    Environment.set_environment_variable(name, pythonpath_value + dir)
+                    Environment.set_environment_variable(name, python_path_value + directory)
             else:
-                print("-        Environment varialbe '" + name + "' allready has the correct value")
+                print("-        Environment variable '" + name + "' already has the correct value")
         else:
-            print("-        Creating to environment varialbe '" + name + "'")
-            Environment.set_environment_variable(name, dir)
-    except:
+            print("-        Creating to environment variable '" + name + "'")
+            Environment.set_environment_variable(name, directory)
+    except Exception:
         print("-        Something went wrong with the setup")
         print("-        Please send the following traceback of the error to a developer:")
         traceback.print_exc()
 
-#print(Environment.get_environment_variable("Path"))
+
+# print(Environment.get_environment_variable("Path"))
 install_path = Path.get_script_path()
-add_dir_to_path("PYTHONPATH", install_path)
-add_dir_to_path("PATH", Path.combine(install_path, "Commands"))
-add_dir_to_path("PATHEXT", ".PY")
+# noinspection SpellCheckingInspection
+__add_dir_to_path("PYTHONPATH", install_path)
+# noinspection SpellCheckingInspection
+__add_dir_to_path("PATH", Path.combine(install_path, "Commands"))
+# noinspection SpellCheckingInspection
+__add_dir_to_path("PATHEXT", ".PY")
 
 print("-    Reloading python sys.path")
 importlib.reload(site)
-print("-    REMEMBER! you cant use the library in the current terminal. Please restart the terminal to reload the needed environment variables")
+print(
+    "-    REMEMBER! you cant use the library in the current terminal. Please restart the terminal to reload the needed environment variables")
 input("setup complete")

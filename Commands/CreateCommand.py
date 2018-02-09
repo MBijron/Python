@@ -1,8 +1,8 @@
 from Commands.Base.CommandBase import CommandBase
-from IO.File import File
-from IO.Path import Path
-from Resources.ResourceHandler import ResourceHandler
-from Util.Regex import Regex
+from PyWorks.IO import File
+from PyWorks.IO.Path import Path
+from PyWorks.Resources.ResourceHandler import ResourceHandler
+from PyWorks.Utils.Regex import Regex
 
 
 class CreateCommandCommand (CommandBase):
@@ -24,4 +24,6 @@ class CreateCommandCommand (CommandBase):
         Regex.replace_file(Path.combine(Path.get_script_path(), name + '.py'), r"\[DESCRIPTION\]", description)
 
 
+# If the file is called directly (not imported) execute the command.
+# If not, create an instance of command, but don't execute it
 command = CreateCommandCommand(__name__ == "__main__")

@@ -13,4 +13,6 @@ class [NAME]Command (CommandBase):
         pass
 
 
+# If the file is called directly (not imported) execute the command.
+# If not, create an instance of command, but don't execute it
 command = [NAME]Command (__name__ == "__main__")

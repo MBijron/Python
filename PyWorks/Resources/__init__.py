@@ -1,0 +1,1 @@
+from PyWorks.Resources.ResourceHandler import ResourceHandler

@@ -1,5 +1,5 @@
-from Util.DateTimeUtil import DateTimeUtil
-from Commands.Middleware.MiddlewareBase import MiddlewareBase
+from PyWorks.Utils import DateTimeUtil
+from Commands.Middleware import MiddlewareBase
 
 
 class DateMiddleware(MiddlewareBase):

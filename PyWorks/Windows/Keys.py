@@ -2,6 +2,7 @@ import win32api
 
 
 class Keys:
+    # noinspection PyProtectedMember
     @staticmethod
     def send_key(key_code):
         hwcode = win32api.MapVirtualKey(key_code._value_, 0)

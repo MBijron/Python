@@ -1,6 +1,6 @@
 import os
-from Commands.Base.CommandBase import CommandBase
-from Commands.Base.AttributeType import AttributeType
+from Commands.Base import CommandBase, Middleware
+from Commands.Base import AttributeType
 
 
 class AddToPath(CommandBase):
@@ -8,7 +8,7 @@ class AddToPath(CommandBase):
     usage = 'AddToPath [path]'
     minArgNr = 1
     maxArgNr = 1
-    types = {1: AttributeType.PATH}
+    types = {1: Middleware.PATH}
 
     @staticmethod
     def _add_folder_to_path(folder):
@@ -18,6 +18,7 @@ class AddToPath(CommandBase):
 
     @staticmethod
     def _path_already_contains_folder(folder):
+        #TODO: Complete this method, it does not check anything at all!
         path = os.environ["PATH"]
         for pathFolder in path.split(";"):
             print(pathFolder)
@@ -28,4 +29,6 @@ class AddToPath(CommandBase):
         self._add_folder_to_path(folder)
 
 
+# If the file is called directly (not imported) execute the command.
+# If not, create an instance of command, but don't execute it
 command = AddToPath(__name__ == "__main__")

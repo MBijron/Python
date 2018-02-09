@@ -1,6 +1,6 @@
 import unittest
 
-from Util.Regex import Regex
+from PyWorks.Utils import Regex
 
 
 class MyTestCase(unittest.TestCase):
@@ -9,8 +9,8 @@ class MyTestCase(unittest.TestCase):
         self.assertFalse(Regex.match_string("dit is een tekst", "^[is]{2}\s*\w+$"))
 
     def test_match_file(self):
-        self.assertTrue(Regex.match_file("TestRegex.py", "[is]{2}\s*\w+"))
-        self.assertFalse(Regex.match_file("TestRegex.py", "^[is]{2}\s*\w+$"))
+        self.assertTrue(Regex.match_file(r".\PyWorksTests\Utils\TestRegex.py", "[is]{2}\s*\w+"))
+        self.assertFalse(Regex.match_file(r".\PyWorksTests\Utils\TestRegex.py", "^[is]{2}\s*\w+$"))
 
     def test_match_files(self):
         self.assertEqual(Regex.match_files("TestResources", "[is]{2}\s*\w+"), ['TestResources\\RegexMatchTest.txt'])
