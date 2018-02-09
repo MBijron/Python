@@ -16,4 +16,4 @@ class SettingTokenizer(TokenizerBase):
 
     def create_token(self, component):
         values = Regex.find_in_string(component, self._regex)
-        self.set_token(SettingToken(0, values[0], values[1] if values[1] else "false"))
+        self.set_token(SettingToken(0, 1, values[0], values[1] if values[1] else "true"))

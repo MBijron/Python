@@ -1,4 +1,6 @@
 # coding=utf-8
+from FineWorks.UDL.Tokenizers import SettingTokenizer, ClassTokenizer, ContentsTokenizer
+from FineWorks.UDL.Tokens import TokenBase
 from PyWorks.IO import File
 import re
 
@@ -16,10 +18,33 @@ class DescriptionInterpreter:
         return re.split(self._split_regex, self._description_string)
 
     def create_tokens(self, components):
-        pass
+        next_index = 0
+        for i in range(0, len(components), 1):
+            if i >= next_index:
+                token: TokenBase = self.find_token(components, i)
+                print(token.get_name())
+                next_index = i + token.get_components_used()
+
+
+    def find_token(self, components: [], index):
+        contents_tokenizer = ContentsTokenizer()
+        setting_tokenizer = SettingTokenizer()
+        class_tokenizer = ClassTokenizer()
+        if contents_tokenizer.matches(self.slice_components(components, index, contents_tokenizer.get_requested_component_nr())):
+            return contents_tokenizer.get_token()
+        if setting_tokenizer.matches(self.slice_components(components, index, setting_tokenizer.get_requested_component_nr())):
+            return setting_tokenizer.get_token()
+        if class_tokenizer.matches(self.slice_components(components, index, class_tokenizer.get_requested_component_nr())):
+            return class_tokenizer.get_token()
+        raise Exception("Wrong syntax at" + components[index])
+
+    def slice_components(self, components: [], index, required_components):
+        if required_components < 0:
+            return components[index:]
+        return components[index:index+required_components]
 
 
 interpreter = DescriptionInterpreter()
 # interpreter.set_file(r"C:\Users\maurice\Dropbox\Documenten\Unified description pattern wiki.txt")
 interpreter.set_file(r"C:\Users\mauriceb\Documents\UDLWIKI.txt")
-interpreter.get_components()
+interpreter.create_tokens(interpreter.get_components())
