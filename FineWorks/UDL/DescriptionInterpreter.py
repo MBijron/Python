@@ -36,7 +36,7 @@ class DescriptionInterpreter:
             return setting_tokenizer.get_token()
         if class_tokenizer.matches(self.slice_components(components, index, class_tokenizer.get_requested_component_nr())):
             return class_tokenizer.get_token()
-        raise Exception("Wrong syntax at" + components[index])
+        raise Exception("Wrong syntax at: " + (' '.join(components[index: index+7])+"..."))
 
     def slice_components(self, components: [], index, required_components):
         if required_components < 0:

@@ -5,7 +5,7 @@ from PyWorks.Utils import Regex
 
 
 class ClassTokenizer(TokenizerBase):
-    _regex = r"^([A-Z_]+)(?<!:)(?:\s+-\s+([\S]+))?:?$"
+    _regex = r"^([A-Z_]{2,})(?<!:)(?:\s+-\s+([\S]+))?:?$"
     _token = None
 
     def __init__(self):
