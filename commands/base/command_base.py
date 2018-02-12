@@ -21,7 +21,6 @@ class CommandBase:
             raise e
 
     def _get_argument(self, index, ignore_middleware=False):
-        test = len(self.__args)
         if len(self.__args) > index:
             if index in self.types and not ignore_middleware:
                 return self.types.get(self.__args[index])

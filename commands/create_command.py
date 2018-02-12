@@ -14,8 +14,8 @@ class CreateCommandCommand (CommandBase):
 
     def main(self):
         # TODO: write unit test
-        name = self.__args[1]
-        description = self.__args[2]
+        name = self._get_argument(1)
+        description = self._get_argument(2)
 
         if File.exists(name + '.py'):
             raise Exception('A command with that name already exists')

@@ -17,6 +17,7 @@ class ExtraWorks:
                         "The '" + requirement + "' extra is needed to continue. Install?"):
                     raise Exception("The user canceled the installation of '" + requirement + "'")
             ExtraWorks.install_requirement(requirement)
+        return ExtraWorks.get_requirement_path(requirement)
 
     @staticmethod
     def install_requirement(requirement):
@@ -30,6 +31,7 @@ class ExtraWorks:
                 "Either cmd is not found, or svn is not installed on the system. Please make sure both are present and are added to path. tortoisesvn link: https://tortoisesvn.net/downloads.html")
         except svn.exception.SvnException as e:
             raise Exception("An svn exception occurred. Does the given requirement exist?")
+        return ExtraWorks.get_requirement_path(requirement)
 
     @staticmethod
     def requirement_installed(requirement):
@@ -41,7 +43,7 @@ class ExtraWorks:
     @staticmethod
     def get_requirement_path(requirement):
         if ExtraWorks.requirement_installed(requirement):
-            return ExtraWorks.__get_absolute_requirement_path()
+            return ExtraWorks.__get_absolute_requirement_path(requirement)
         raise Exception("The requirement '" + requirement + "' is not installed")
 
     @staticmethod

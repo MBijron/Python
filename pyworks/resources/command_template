@@ -1,6 +1,4 @@
-from Commands.Base.CommandBase import CommandBase
-from Commands.Base.CommandBase import AttributeType
-
+from commands.base import CommandBase
 
 class [NAME]Command (CommandBase):
     desc = '[DESCRIPTION]'
