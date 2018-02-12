@@ -1,1 +1,1 @@
-from PyWorks.Resources.ResourceHandler import ResourceHandler
+from pyworks.resources.resource_handler import ResourceHandler

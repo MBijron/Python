@@ -69,6 +69,6 @@ s = setup(
 )
 print("--------------------")
 print("")
-print("Please run the python command 'import FinalizeSetup.py' from an elevated python console")
+print("Please run the python command 'import finalize_setup.py' from an elevated python console")
 print("")
 print("--------------------")

@@ -1,1 +1,1 @@
-from PyWorks.SubVersion.Svn import Svn
+from pyworks.subversion.svn import Svn

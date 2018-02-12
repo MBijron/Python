@@ -1,4 +1,4 @@
 pip
 win32gui
-pypiwin32==220
+pypiwin32
 svn

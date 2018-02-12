@@ -1,1 +1,1 @@
-from test.CommandTests.Commands.Base import *
+from test.commandtests.commands.base import *
