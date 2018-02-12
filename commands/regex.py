@@ -1,6 +1,6 @@
 from commands.base.command_base import CommandBase
 from commands.base.command_base import AttributeType
-from pyworks_.utils.regex import Regex
+from pyworks.utils.regex import Regex
 
 
 class RegexCommand(CommandBase):

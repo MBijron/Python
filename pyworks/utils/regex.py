@@ -1,7 +1,7 @@
 import os
 import pathlib
 import re
-from pyworks_.io import File
+from pyworks.io import File
 
 
 class Regex:

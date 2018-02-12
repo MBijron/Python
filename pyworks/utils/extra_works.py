@@ -1,8 +1,8 @@
 import svn
 
-from pyworks_.io import File, Directory, Path
-from pyworks_.subversion import Svn
-from pyworks_.utils import CommandLineUtils
+from pyworks.io import File, Directory, Path
+from pyworks.subversion import Svn
+from pyworks.utils import CommandLineUtils
 
 
 class ExtraWorks:

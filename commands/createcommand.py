@@ -1,8 +1,8 @@
 from commands.base.command_base import CommandBase
-from pyworks_.io import File
-from pyworks_.io.path import Path
-from pyworks_.resources.resource_handler import ResourceHandler
-from pyworks_.utils.regex import Regex
+from pyworks.io import File
+from pyworks.io.path import Path
+from pyworks.resources.resource_handler import ResourceHandler
+from pyworks.utils.regex import Regex
 
 
 class CreateCommandCommand (CommandBase):
