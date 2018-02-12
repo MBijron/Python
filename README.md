@@ -23,4 +23,4 @@
 </ol>
 <b>Description</b>
 <p>This is meant to be a kind of swiss knife library including all kinds of usefull features. The library is updated when in need of new features</p>
-<p>Suggestions for features or a better name of the library are always welcome!</p>
+<p>Suggestions for features are always welcome!</p>
