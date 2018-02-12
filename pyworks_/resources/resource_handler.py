@@ -1,5 +1,5 @@
-from pyworks.io import File
-from pyworks.io.path import Path
+from pyworks_.io import File
+from pyworks_.io.path import Path
 
 
 class ResourceHandler:

@@ -1,12 +1,12 @@
 # noinspection PyUnresolvedReferences
 import install_packages
-from pyworks.io.path import Path
+from pyworks_.io.path import Path
 import site
 import importlib
 import sys
 import traceback
-from pyworks.windows.admin import Admin
-from pyworks.windows.environment import Environment
+from pyworks_.windows.admin import Admin
+from pyworks_.windows.environment import Environment
 
 # the script needs admin to run
 if not (Admin.is_user_admin()):
