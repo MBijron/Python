@@ -1,4 +1,4 @@
-<h1>PythonMB</h1>
+<h1>PyWorks</h1>
 <i>(in lack of a better name, suggestions welcome!)</i>
 <br>
 <br>
