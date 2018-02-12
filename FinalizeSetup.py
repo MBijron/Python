@@ -11,7 +11,7 @@ from PyWorks.Utils import Packages
 
 Packages.install('pypiwin32')
 Packages.install('win32gui')
-Packages.install('python-docx')
+Packages.install('svn')
 
 from PyWorks.Windows.Admin import Admin
 from PyWorks.Windows.Environment import Environment
