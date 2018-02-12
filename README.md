@@ -22,5 +22,5 @@
   <li>Be sure to restart windows to make sure everything works correctly</li>
 </ol>
 <b>Description</b>
-<p>This is meaned to be a kind of swiss knife library including all kinds of usefull features. The library is updated when in need of new features</p>
+<p>This is meant to be a kind of swiss knife library including all kinds of usefull features. The library is updated when in need of new features</p>
 <p>Suggestions for features or a better name of the library are always welcome!</p>
