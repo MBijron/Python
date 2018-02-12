@@ -1,0 +1,18 @@
+from Commands.Base.CommandBase import CommandBase
+from Commands.Base.CommandBase import AttributeType
+
+
+class [NAME]Command (CommandBase):
+    desc = '[DESCRIPTION]'
+    usage = '[NAME]'
+    minArgNr = 0
+    maxArgNr = 0
+    types = {}
+
+    def main(self):
+        pass
+
+
+# If the file is called directly (not imported) execute the command.
+# If not, create an instance of command, but don't execute it
+command = [NAME]Command (__name__ == "__main__")
