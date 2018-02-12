@@ -13,7 +13,8 @@ class ExtraWorks:
     def install_if_missing(requirement, prompt_user=True):
         if not ExtraWorks.requirement_installed(requirement):
             if prompt_user:
-                if not CommandLineUtils.prompt_for_yes_no("The '" + requirement + "' extra is needed to continue. Install?"):
+                if not CommandLineUtils.prompt_for_yes_no(
+                        "The '" + requirement + "' extra is needed to continue. Install?"):
                     raise Exception("The user canceled the installation of '" + requirement + "'")
             ExtraWorks.install_requirement(requirement)
 
@@ -25,7 +26,8 @@ class ExtraWorks:
             Svn.export(source_link, destination_path, force=True, revision=None)
             ExtraWorks.__run_requirement_scripts(requirement)
         except FileNotFoundError as e:
-            raise Exception("Either cmd is not found, or svn is not installed on the system. Please make sure both are present and are added to path. tortoisesvn link: https://tortoisesvn.net/downloads.html")
+            raise Exception(
+                "Either cmd is not found, or svn is not installed on the system. Please make sure both are present and are added to path. tortoisesvn link: https://tortoisesvn.net/downloads.html")
         except svn.exception.SvnException as e:
             raise Exception("An svn exception occurred. Does the given requirement exist?")
 
@@ -63,5 +65,3 @@ class ExtraWorks:
     @staticmethod
     def __get_dest_path():
         return Path.combine(Path.get_file_path(__file__), ExtraWorks._dest_path)
-
-# ExtraWorks.install_if_missing("with_installer@1.1.2")
