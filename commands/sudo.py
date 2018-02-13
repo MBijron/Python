@@ -13,9 +13,7 @@ class sudoCommand (CommandBase):
     ]
 
     def main(self):
-        if not Admin.is_user_admin():
-            Admin.run_as_admin([sys.executable, Path.combine(Path.get_file_path(__file__), "terminal.py")])
-            sys.exit(1)
+        Admin.run_as_admin([sys.executable, Path.combine(Path.get_file_path(__file__), "terminal.py")])
 
 
 # If the file is called directly (not imported) execute the command.
