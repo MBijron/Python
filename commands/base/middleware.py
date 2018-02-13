@@ -1,3 +1,4 @@
+from commands.middleware import AnyMiddleware
 from commands.middleware.date_middleware import DateMiddleware
 from commands.middleware.file_middleware import FileMiddleware
 from commands.middleware.folder_middleware import FolderMiddleware
@@ -9,3 +10,4 @@ class Middleware:
     FILE = FileMiddleware()
     FOLDER = FolderMiddleware()
     PATH = PathMiddleware()
+    ANY = AnyMiddleware()

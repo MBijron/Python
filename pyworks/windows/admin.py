@@ -42,8 +42,6 @@ class Admin:
 
         if cmd_line is None:
             cmd_line = [python_exe] + sys.argv
-        elif type(cmd_line) not in (types.TupleType, types.ListType):
-            raise ValueError("cmdLine is not a sequence.")
         cmd = '"%s"' % (cmd_line[0],)
         # XXX TODO: isn't there a function or something we can call to massage command line params?
         params = " ".join(['"%s"' % (x,) for x in cmd_line[1:]])

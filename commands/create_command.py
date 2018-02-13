@@ -1,3 +1,4 @@
+from commands.base import CommandParameter, Middleware
 from commands.base.command_base import CommandBase
 from pyworks.io import File
 from pyworks.io.path import Path
@@ -8,14 +9,15 @@ from pyworks.utils.regex import Regex
 class CreateCommandCommand (CommandBase):
     desc = 'Create a python command'
     usage = 'CreateCommand [name] [description]'
-    minArgNr = 2
-    maxArgNr = 2
-    types = {}
+    parameters = [
+        CommandParameter("name", Middleware.ANY),
+        CommandParameter("description", Middleware.ANY)
+    ]
 
     def main(self):
         # TODO: write unit test
-        name = self._get_argument(1)
-        description = self._get_argument(2)
+        name = self.get_parameter_value("name")
+        description = self.get_parameter_value("description")
 
         if File.exists(name + '.py'):
             raise Exception('A command with that name already exists')

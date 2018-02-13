@@ -50,7 +50,8 @@ class ExtraWorks:
     def __run_requirement_scripts(requirement):
         requirement_path = ExtraWorks.__get_absolute_requirement_path(requirement)
         installer_script_path = Path.combine(requirement_path, "setup.py")
-        if File.exists(installer_script_path):
+        file_exists = File.exists(installer_script_path)
+        if file_exists:
             variables = {
                 "script_path": Path.get_file_path(installer_script_path)
             }
@@ -58,7 +59,8 @@ class ExtraWorks:
                 exec(open(installer_script_path).read(), globals(), variables)
             except Exception as e:
                 raise Exception("Executing the setup script from the extra resulted in an error: " + str(e))
-            File.delete(installer_script_path)
+            finally:
+                File.delete(installer_script_path)
 
     @staticmethod
     def __get_absolute_requirement_path(requirement):

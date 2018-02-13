@@ -1,11 +1,12 @@
-from commands.base import CommandBase
+from commands.base import CommandBase, Middleware, CommandParameter
+
 
 class [NAME]Command (CommandBase):
     desc = '[DESCRIPTION]'
     usage = '[NAME]'
-    minArgNr = 0
-    maxArgNr = 0
-    types = {}
+    parameters = [
+
+    ]
 
     def main(self):
         pass
