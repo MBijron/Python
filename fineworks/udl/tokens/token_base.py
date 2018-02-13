@@ -1,4 +1,4 @@
-from fineworks.udl.tokens import TokenType
+from fineworks.udl.tokens.token_type import TokenType
 
 
 class TokenBase:

@@ -1,7 +1,7 @@
 # coding=utf-8
-from fineworks.udl.lexers import LexerBase
-from fineworks.udl.tokens import ClassToken
-from pyworks.utils import Regex
+from fineworks.udl.lexers.lexer_base import LexerBase
+from fineworks.udl.tokens.class_token import ClassToken
+from pyworks.utils.regex import Regex
 
 
 class ContentsLexer(LexerBase):

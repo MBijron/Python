@@ -1,8 +1,6 @@
 from commands.replace_file_part import ReplaceFilePart
 from commands.replace_text_endpoint import ReplaceTextEndpoint
-
 from commands.base.command_base import CommandBase
-from commands.base.attribute_type import AttributeType
 from commands.duplicate import Duplicate
 
 

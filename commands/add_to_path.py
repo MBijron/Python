@@ -1,6 +1,6 @@
 import os
-from commands.base import CommandBase, Middleware
-from commands.base import AttributeType
+from commands.base.command_base import CommandBase
+from commands.base.middleware import Middleware
 
 
 class AddToPath(CommandBase):

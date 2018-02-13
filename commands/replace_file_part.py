@@ -1,8 +1,6 @@
 import os
 import pathlib
-
 from commands.base.command_base import CommandBase
-from commands.base.attribute_type import AttributeType
 
 
 class ReplaceFilePart(CommandBase):

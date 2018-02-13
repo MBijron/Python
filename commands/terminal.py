@@ -1,5 +1,5 @@
-from commands.base import CommandBase
-from pyworks.utils import ExtraWorks
+from commands.base.command_base import CommandBase
+from pyworks.utils.extra_works import ExtraWorks
 from subprocess import call
 
 

@@ -1,5 +1,7 @@
-from commands.base import CommandBase, Middleware, CommandParameter
-from pyworks.utils import ExtraWorks
+from commands.base.command_base import CommandBase
+from commands.base.middleware import Middleware
+from commands.base.command_parameter import CommandParameter
+from pyworks.utils.extra_works import ExtraWorks
 
 
 class ExtraWorksCommand(CommandBase):

@@ -1,6 +1,5 @@
 from commands import replace_text
 from commands.base.command_base import CommandBase
-from commands.base.attribute_type import AttributeType
 
 
 class ReplaceTextEndpoint(CommandBase):

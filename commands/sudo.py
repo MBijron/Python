@@ -1,8 +1,8 @@
 import sys
 
-from commands.base import CommandBase, Middleware, CommandParameter
-from pyworks.io import Path
-from pyworks.windows import Admin
+from commands.base.command_base import CommandBase
+from pyworks.io.path import Path
+from pyworks.windows.admin import Admin
 
 
 class sudoCommand (CommandBase):

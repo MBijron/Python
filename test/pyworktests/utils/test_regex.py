@@ -1,6 +1,6 @@
 import unittest
 
-from pyworks.utils import Regex
+from pyworks.utils.regex import Regex
 
 
 class MyTestCase(unittest.TestCase):

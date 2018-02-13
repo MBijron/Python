@@ -1,6 +1,6 @@
-from commands.base import Middleware
-from commands.base import CommandBase
-from pyworks.utils import DateTimeUtil
+from commands.base.middleware import Middleware
+from commands.base.command_base import CommandBase
+from pyworks.utils.datetime_utils import DateTimeUtil
 
 
 class CreateLogbookCommand(CommandBase):

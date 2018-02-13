@@ -2,7 +2,6 @@ import ctypes
 import os
 import sys
 import traceback
-import types
 
 import win32con
 import win32event

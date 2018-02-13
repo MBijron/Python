@@ -1,7 +1,7 @@
 import unittest
 import os
 
-from pyworks.windows import Environment
+from pyworks.windows.environment import Environment
 
 
 class MyTestCase(unittest.TestCase):

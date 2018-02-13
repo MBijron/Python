@@ -1,6 +1,7 @@
-from commands.base import CommandParameter, Middleware
+from commands.base.command_parameter import CommandParameter
+from commands.base.middleware import Middleware
 from commands.base.command_base import CommandBase
-from pyworks.io import File
+from pyworks.io.file import File
 from pyworks.io.path import Path
 from pyworks.resources.resource_handler import ResourceHandler
 from pyworks.utils.regex import Regex

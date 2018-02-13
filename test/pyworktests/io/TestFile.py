@@ -1,6 +1,6 @@
 import unittest
 
-from pyworks.io import File
+from pyworks.io.file import File
 
 
 class MyTestCase(unittest.TestCase):

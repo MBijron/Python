@@ -1,4 +1,4 @@
-from commands.middleware import MiddlewareBase
+from commands.middleware.middleware_base import MiddlewareBase
 
 
 class CommandParameter:

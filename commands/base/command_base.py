@@ -1,5 +1,5 @@
 import sys
-from commands.base import CommandParameter
+from commands.base.command_parameter import CommandParameter
 
 class CommandBase:
     desc = 'No description available for this command'

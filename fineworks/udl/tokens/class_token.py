@@ -1,5 +1,5 @@
-from fineworks.udl.tokens import TokenBase
-from fineworks.udl.tokens import TokenType
+from fineworks.udl.tokens.token_base import TokenBase
+from fineworks.udl.tokens.token_type import TokenType
 
 
 class ClassToken(TokenBase):

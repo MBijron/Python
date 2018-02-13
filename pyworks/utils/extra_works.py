@@ -1,8 +1,11 @@
 import svn
+from svn.exception import SvnException
 
-from pyworks.io import File, Directory, Path
-from pyworks.subversion import Svn
-from pyworks.utils import CommandLineUtils
+from pyworks.io.file import File
+from pyworks.io.directory import Directory
+from pyworks.io.path import Path
+from pyworks.subversion.svn import Svn
+from pyworks.utils.command_line_utils import CommandLineUtils
 
 
 class ExtraWorks:
@@ -29,7 +32,7 @@ class ExtraWorks:
         except FileNotFoundError as e:
             raise Exception(
                 "Either cmd is not found, or svn is not installed on the system. Please make sure both are present and are added to path. tortoisesvn link: https://tortoisesvn.net/downloads.html")
-        except svn.exception.SvnException as e:
+        except SvnException as e:
             raise Exception("An svn exception occurred. Does the given requirement exist?")
         return ExtraWorks.get_requirement_path(requirement)
 

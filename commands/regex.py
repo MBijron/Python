@@ -1,5 +1,4 @@
 from commands.base.command_base import CommandBase
-from commands.base.command_base import AttributeType
 from pyworks.utils.regex import Regex
 
 

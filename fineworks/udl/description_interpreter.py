@@ -1,7 +1,10 @@
 # coding=utf-8
-from fineworks.udl.lexers import SettingsLexer, ClassLexer, ContentsLexer, TextLexer
-from fineworks.udl.tokens import TokenBase
-from pyworks.io import File
+from fineworks.udl.lexers.settings_lexer import SettingsLexer
+from fineworks.udl.lexers.class_lexer import ClassLexer
+from fineworks.udl.lexers.contents_lexer import ContentsLexer
+from fineworks.udl.lexers.text_lexer import TextLexer
+from fineworks.udl.tokens.token_base import TokenBase
+from pyworks.io.file import File
 import re
 
 
