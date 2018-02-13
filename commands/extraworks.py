@@ -24,6 +24,12 @@ class ExtraWorksCommand(CommandBase):
         elif command == "reinstall":
             print("Reinstalling " + data)
             ExtraWorks.install_requirement(data)
+        elif command == "uninstall":
+            print("Uninstalling " + data)
+            if ExtraWorks.requirement_installed(data):
+                ExtraWorks.uninstall(data)
+            else:
+                print("Package is not installed and can't be uninstalled")
         else:
             print("Wrong argument given '" + command + "'. Use install or reinstall")
 

@@ -50,9 +50,16 @@ class ExtraWorks:
         raise Exception("The requirement '" + requirement + "' is not installed")
 
     @staticmethod
-    def __run_requirement_scripts(requirement):
+    def uninstall(requirement):
+        if ExtraWorks.requirement_installed(requirement):
+            path = ExtraWorks.__get_absolute_requirement_path(requirement)
+            ExtraWorks.__run_requirement_scripts(requirement, cleanup=True)
+            Directory.delete(path)
+
+    @staticmethod
+    def __run_requirement_scripts(requirement, cleanup=False):
         requirement_path = ExtraWorks.__get_absolute_requirement_path(requirement)
-        installer_script_path = Path.combine(requirement_path, "setup.py")
+        installer_script_path = Path.combine(requirement_path, cleanup if "takedown.py" else "setup.py")
         file_exists = File.exists(installer_script_path)
         if file_exists:
             variables = {
