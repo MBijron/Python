@@ -8,10 +8,10 @@ class TextLexer(LexerBase):
     _regex = r"^((?:(?:(?![A-Z_]{2,})[^\"])*(?:\"[^\"]*\")?)*)"
     _token = None
 
-    def __init__(self):
+    def __init__(self) -> None:
         self.set_requested_component_nr(-1)
 
-    def matches(self, components: []):
+    def matches(self, components: []) -> bool:
         biggest_match = None
         used_components = 0
         mismatch_nr = 0
@@ -30,5 +30,5 @@ class TextLexer(LexerBase):
             return True
         return False
 
-    def create_token(self, component, components_used):
+    def create_token(self, component, components_used) -> None:
         self.set_token(ClassToken(0, components_used, "TEXT", component))

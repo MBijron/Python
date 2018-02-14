@@ -4,9 +4,9 @@ import shutil
 
 class Directory:
     @staticmethod
-    def exists(directory):
+    def exists(directory) -> bool:
         return os.path.isdir(directory)
 
     @staticmethod
-    def delete(directory):
+    def delete(directory) -> None:
         shutil.rmtree(directory)

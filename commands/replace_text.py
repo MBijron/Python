@@ -12,7 +12,7 @@ class ReplaceText(CommandBase):
     types = {1: AttributeType.PATH}
 
     @staticmethod
-    def _replace_text_in_file(location, original, replacement):
+    def _replace_text_in_file(location, original, replacement) -> None:
         # TODO: write unit test
         with open(location) as f:
             new_text = f.read().replace(original, replacement)
@@ -20,7 +20,7 @@ class ReplaceText(CommandBase):
             f.write(new_text)
 
     @staticmethod
-    def replace_text_in_path(location, original, replacement):
+    def replace_text_in_path(location, original, replacement) -> None:
         # TODO: write unit test
         location = pathlib.Path(location)
         if location.is_file():
@@ -33,7 +33,7 @@ class ReplaceText(CommandBase):
         else:
             raise Exception('The first argument should be a file or directory')
 
-    def main(self):
+    def main(self) -> None:
         # TODO: write unit test
         location = self.args[1]
         original = self.args[2]

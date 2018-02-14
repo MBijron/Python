@@ -15,7 +15,7 @@ class CreateCommandCommand (CommandBase):
         CommandParameter("description", Middleware.ANY)
     ]
 
-    def main(self):
+    def main(self) -> None:
         # TODO: write unit test
         name = self.get_parameter_value("name")
         description = self.get_parameter_value("description")

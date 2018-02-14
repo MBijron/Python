@@ -4,7 +4,7 @@ import site
 
 class Packages:
     @staticmethod
-    def install(package):
+    def install(package) -> None:
         # TODO: write unit test
         try:
             importlib.import_module(package)

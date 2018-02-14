@@ -12,12 +12,12 @@ class ReplaceFilePart(CommandBase):
     types = {1: AttributeType.PATH}
 
     @staticmethod
-    def _replace_file_part(location, original, replacement):
+    def _replace_file_part(location, original, replacement) -> None:
         # TODO: write unit test
         os.rename(location, location.__str__().replace(original, replacement))
 
     @staticmethod
-    def replace_file_parts_in_path(location, original, replacement):
+    def replace_file_parts_in_path(location, original, replacement) -> None:
         # TODO: write unit test
         location = pathlib.Path(location)
         if location.is_file():
@@ -30,7 +30,7 @@ class ReplaceFilePart(CommandBase):
         else:
             raise Exception('The first argument should be a file or directory')
 
-    def main(self):
+    def main(self) -> None:
         # TODO: write unit test
         location = self.args[1]
         original = self.args[2]

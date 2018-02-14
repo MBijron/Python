@@ -2,6 +2,7 @@ import ctypes
 import os
 import sys
 import traceback
+from typing import Any
 
 import win32con
 import win32event
@@ -12,7 +13,7 @@ from win32com.shell.shell import ShellExecuteEx
 
 class Admin:
     @staticmethod
-    def is_user_admin():
+    def is_user_admin() -> bool:
         # TODO: write unit test
 
         if os.name == 'nt':
@@ -31,7 +32,7 @@ class Admin:
             raise RuntimeError("Unsupported operating system for this module: %s" % (os.name,))
 
     @staticmethod
-    def run_as_admin(cmd_line=None, wait=True):
+    def run_as_admin(cmd_line=None, wait=True) -> Any:
         # TODO: write unit test
 
         if os.name != 'nt':
@@ -61,7 +62,6 @@ class Admin:
                                    lpVerb=lp_verb,
                                    lpFile=cmd,
                                    lpParameters=params)
-
         if wait:
             proc_handle = proc_info['hProcess']
             obj = win32event.WaitForSingleObject(proc_handle, win32event.INFINITE)

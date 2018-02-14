@@ -10,7 +10,7 @@ class ReplaceTextEndpoint(CommandBase):
     types = {1: AttributeType.PATH}
 
     @staticmethod
-    def replace_text_in_endpoint_file(location, original, replacement):
+    def replace_text_in_endpoint_file(location, original, replacement) -> None:
         # TODO: write unit test
         cmd = replace_text.ReplaceText(False)
         cmd.replace_text_in_path(location, original, replacement)
@@ -18,7 +18,7 @@ class ReplaceTextEndpoint(CommandBase):
         replacement = replacement[0].lower() + replacement[1:]
         cmd.replace_text_in_path(location, original, replacement)
 
-    def main(self):
+    def main(self) -> None:
         # TODO: write unit test
         location = self.__args[1]
         original = self.__args[2]

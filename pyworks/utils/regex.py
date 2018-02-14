@@ -1,13 +1,15 @@
 import os
 import pathlib
 import re
+from typing import List
+
 from pyworks.io.file import File
 
 
 class Regex:
 
     @staticmethod
-    def match_string(string, pattern):
+    def match_string(string, pattern) -> bool:
         regex = re.compile(pattern)
         if regex.search(string):
             return True
@@ -15,19 +17,19 @@ class Regex:
             return False
 
     @staticmethod
-    def find_in_string(string, pattern):
+    def find_in_string(string, pattern) -> tuple:
         regex = re.compile(pattern)
         result = regex.match(string)
         if result:
             return result.groups()
 
     @staticmethod
-    def match_file(path, pattern):
+    def match_file(path, pattern) -> bool:
         text = File.read_text(path)
         return Regex.match_string(text, pattern)
 
     @staticmethod
-    def match_files(path, pattern, filter='.*'):
+    def match_files(path, pattern, filter='.*') -> List[str]:
         matched_files = []
         for location, sub_dirs, files in os.walk(path):
             for name in files:
@@ -36,17 +38,17 @@ class Regex:
         return matched_files
 
     @staticmethod
-    def replace_string(string, pattern, replacement):
+    def replace_string(string, pattern, replacement) -> str:
         return re.sub(pattern, replacement, string)
 
     @staticmethod
-    def replace_file(path, pattern, replacement):
+    def replace_file(path, pattern, replacement) -> None:
         text = File.read_text(path)
         text = Regex.replace_string(text, pattern, replacement)
         File.write_text(path, text)
 
     @staticmethod
-    def replace_files(path, pattern, replacement, filter='.*'):
+    def replace_files(path, pattern, replacement, filter='.*') -> None:
         for location, sub_dirs, files in os.walk(path):
             for name in files:
                 if Regex.match_string(name, filter):

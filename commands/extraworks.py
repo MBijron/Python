@@ -12,7 +12,7 @@ class ExtraWorksCommand(CommandBase):
         CommandParameter("data", Middleware.ANY)
     ]
 
-    def main(self):
+    def main(self) -> None:
         command = self.get_parameter_value("action")
         data = self.get_parameter_value("data")
         if command == "install":

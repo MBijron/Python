@@ -1,6 +1,6 @@
 class CommandLineUtils:
     @staticmethod
-    def prompt_for_yes_no(message):
+    def prompt_for_yes_no(message) -> bool:
         response = input(message + " (Y,N)")
         if response is "N" or response is "n":
             return False

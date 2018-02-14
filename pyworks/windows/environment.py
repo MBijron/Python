@@ -7,7 +7,7 @@ from winreg import *
 class Environment:
 
     @staticmethod
-    def get_environment_variable(name):
+    def get_environment_variable(name) -> str:
         path = r'SYSTEM\CurrentControlSet\Control\Session Manager\Environment'
         reg = ConnectRegistry(None, HKEY_LOCAL_MACHINE)
         key = OpenKey(reg, path, 0, KEY_ALL_ACCESS)
@@ -21,7 +21,7 @@ class Environment:
         raise Exception("The environment variable was not found")
 
     @staticmethod
-    def environment_variable_exists(name):
+    def environment_variable_exists(name) -> bool:
         path = r'SYSTEM\CurrentControlSet\Control\Session Manager\Environment'
         reg = ConnectRegistry(None, HKEY_LOCAL_MACHINE)
         key = OpenKey(reg, path, 0, KEY_ALL_ACCESS)
@@ -35,7 +35,7 @@ class Environment:
         return False
 
     @staticmethod
-    def set_environment_variable(name, value):
+    def set_environment_variable(name, value) -> None:
         path = r'SYSTEM\CurrentControlSet\Control\Session Manager\Environment'
         reg = ConnectRegistry(None, HKEY_LOCAL_MACHINE)
         key = OpenKey(reg, path, 0, KEY_ALL_ACCESS)
@@ -49,7 +49,7 @@ class Environment:
         CloseKey(reg)
 
     @staticmethod
-    def delete_environment_variable(name):
+    def delete_environment_variable(name) -> None:
         path = r'SYSTEM\CurrentControlSet\Control\Session Manager\Environment'
         reg = ConnectRegistry(None, HKEY_LOCAL_MACHINE)
         key = OpenKey(reg, path, 0, KEY_ALL_ACCESS)
@@ -62,5 +62,5 @@ class Environment:
         CloseKey(reg)
 
     @staticmethod
-    def expand_variables(string):
+    def expand_variables(string) -> str:
         return os.path.expandvars(string)

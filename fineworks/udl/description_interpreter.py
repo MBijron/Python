@@ -1,4 +1,6 @@
 # coding=utf-8
+from typing import List
+
 from fineworks.udl.lexers.settings_lexer import SettingsLexer
 from fineworks.udl.lexers.class_lexer import ClassLexer
 from fineworks.udl.lexers.contents_lexer import ContentsLexer
@@ -12,16 +14,16 @@ class DescriptionInterpreter:
     _description_string = None
     _split_regex = r"[\s]+"
 
-    def set_file(self, file):
+    def set_file(self, file) -> None:
         self._description_string = File.read_text(file)
 
-    def set_text(self, text):
-        self._description_string = text;
+    def set_text(self, text) -> None:
+        self._description_string = text
 
-    def get_components(self):
+    def get_components(self) -> List[str]:
         return re.split(self._split_regex, self._description_string)
 
-    def create_tokens(self, components):
+    def create_tokens(self, components) -> None:
         next_index = 0
         for i in range(0, len(components), 1):
             if i >= next_index:
@@ -29,7 +31,7 @@ class DescriptionInterpreter:
                 print(token.get_name())
                 next_index = i + token.get_components_used()
 
-    def find_token(self, components: [], index):
+    def find_token(self, components: [], index) -> TokenBase:
         contents_tokenizer = ContentsLexer()
         setting_tokenizer = SettingsLexer()
         class_tokenizer = ClassLexer()
@@ -48,7 +50,8 @@ class DescriptionInterpreter:
             return text_tokenizer.get_token()
         raise Exception("Wrong syntax at: " + (' '.join(components[index: index + 7]) + "..."))
 
-    def slice_components(self, components: [], index, required_components):
+    # noinspection PyMethodMayBeStatic
+    def slice_components(self, components: List[str], index: int, required_components: int) -> List[str]:
         if required_components < 0:
             return components[index:]
         return components[index:index + required_components]

@@ -11,19 +11,19 @@ class AddToPath(CommandBase):
     types = {1: Middleware.PATH}
 
     @staticmethod
-    def _add_folder_to_path(folder):
+    def _add_folder_to_path(folder) -> None:
         # TODO: write unit test
         if not AddToPath._path_already_contains_folder(folder):
             print("folder not in path yet")
 
     @staticmethod
-    def _path_already_contains_folder(folder):
+    def _path_already_contains_folder(folder) -> None:
         #TODO: Complete this method, it does not check anything at all!
         path = os.environ["PATH"]
         for pathFolder in path.split(";"):
             print(pathFolder)
 
-    def main(self):
+    def main(self) -> None:
         # TODO: write unit test
         folder = self.__args[1]
         self._add_folder_to_path(folder)

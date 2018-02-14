@@ -8,7 +8,7 @@ class ContentsLexer(LexerBase):
     _regex = r"^(CONTENTS)(\s+[-]+\s+[A-Za-z_]+)+$"
     _token = None
 
-    def __init__(self):
+    def __init__(self) -> None:
         self.set_requested_component_nr(-1)
 
     def matches(self, components: []):
@@ -30,5 +30,5 @@ class ContentsLexer(LexerBase):
             return True
         return False
 
-    def create_token(self, component, components_used):
+    def create_token(self, component, components_used) -> None:
         self.set_token(ClassToken(0, components_used, "CONTENTS", component))

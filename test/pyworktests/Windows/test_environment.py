@@ -5,11 +5,11 @@ from pyworks.windows.environment import Environment
 
 
 class MyTestCase(unittest.TestCase):
-    def test_environment_variable_exists(self):
+    def test_environment_variable_exists(self) -> None:
         self.assertEqual(Environment.environment_variable_exists("PATH"), True)
         self.assertEqual(Environment.environment_variable_exists("NON_EXISTENT_ENVIRONMENT_VARIABLE_#$(*&Y@#(*"), False)
 
-    def test_expand_variables(self):
+    def test_expand_variables(self) -> None:
         self.assertEqual("something" + Environment.expand_variables("%path%") + "something", "something" + os.getenv("path") + "something")
 
     """def test_get_environment_variable(self):
@@ -17,7 +17,7 @@ class MyTestCase(unittest.TestCase):
         self.maxDiff = None;
         self.assertEqual(Environment.expand_variables(Environment.get_environment_variable("path")), os.getenv("path").split(";;")[0])
     """
-    def test_set_environment_variable(self):
+    def test_set_environment_variable(self) -> None:
         varname = "python_test_variable"
         Environment.set_environment_variable(varname, "1")
         # Test if the just created environment variable exists

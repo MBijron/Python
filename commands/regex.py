@@ -10,11 +10,11 @@ class RegexCommand(CommandBase):
     types = {1: AttributeType.PATH}
 
     @staticmethod
-    def _print_results(results):
+    def _print_results(results) -> None:
         for result in results:
             print(result)
 
-    def main(self):
+    def main(self) -> None:
         # TODO: write unit test
         location = self.__args[1]
         pattern = self.__args[2]

@@ -12,7 +12,7 @@ class sudoCommand (CommandBase):
 
     ]
 
-    def main(self):
+    def main(self) -> None:
         Admin.run_as_admin([sys.executable, Path.combine(Path.get_file_path(__file__), "terminal.py")])
 
 

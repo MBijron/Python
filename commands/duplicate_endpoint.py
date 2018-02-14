@@ -12,7 +12,7 @@ class DuplicateEndpoint(CommandBase):
     maxArgNr = 4
     types = {1: AttributeType.PATH}
 
-    def main(self):
+    def main(self) -> None:
         # TODO: write unit test
         location = self.args[1]
         new = self.args[2]

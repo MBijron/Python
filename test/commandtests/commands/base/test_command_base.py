@@ -12,27 +12,16 @@ class TestCommandBase(unittest.TestCase):
         "foo"
     ]
 
-    def setUp(self):
+    def setUp(self) -> None:
         # first, set a few arguments, so the command can behave as expected
         for argument in self._command_arguments:
             sys.argv.append(argument)
             self._base_command = MockCommand(True)
 
-    def test_get_argument__returns_correct_arguments(self):
-
-        for idx, value in enumerate(self._command_arguments):
-            self.assertEqual(value, self._base_command._get_argument(idx + 1))
-
-    def test_get_argument__throws_out_of_range_exception(self):
-        self.assertRaises(Exception, lambda: self._base_command._get_argument(4))
-
-    def test_add_middleware__checks_correctly(self):
-        self._base_command = MockCommand(True)
-
 
 class MockCommand(CommandBase):
 
-    def main(self):
+    def main(self) -> None:
         pass
 
 class MockCommandWithMiddleware(CommandBase):
@@ -41,7 +30,7 @@ class MockCommandWithMiddleware(CommandBase):
         2: Middleware.DATE,
     }
 
-    def main(self):
+    def main(self) -> None:
         pass
 
 
