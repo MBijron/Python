@@ -1,6 +1,5 @@
 .vscode
 *.pyc
-.idea
 venv
 extraworks/*
 extraworks_dev

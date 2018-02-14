@@ -14,7 +14,7 @@ class CommandBase:
     def main(self) -> None:
         raise NotImplementedError
 
-    def get_parameter_value(self, name: str) -> Any:
+    def get_parameter_value(self, name) -> Any:
         for parameter in self.parameters:
             if parameter.get_name() == name:
                 return parameter.get_value()
