@@ -1,10 +1,10 @@
 from commands.replace_file_part import ReplaceFilePart
 from commands.replace_text_endpoint import ReplaceTextEndpoint
-from commands.base.command_base import CommandBase
+from commands.base.command_base import BaseCommand
 from commands.duplicate import Duplicate
 
 
-class DuplicateEndpoint(CommandBase):
+class DuplicateEndpoint(BaseCommand):
     __args = []
     desc = 'Duplicate an endpoint file or folder'
     usage = 'DuplicateEndpointFile [file/folder] [new name] [original name in text] [replacement name in text]'

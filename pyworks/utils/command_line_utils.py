@@ -1,3 +1,6 @@
+import time
+
+
 class CommandLineUtils:
     @staticmethod
     def prompt_for_yes_no(message) -> bool:
@@ -7,5 +10,6 @@ class CommandLineUtils:
         elif response is "Y" or response is "y":
             return True
         else:
+            time.sleep(100)
             print("Input was incorrect. Please choose Y or N")
             CommandLineUtils.prompt_for_yes_no(message)

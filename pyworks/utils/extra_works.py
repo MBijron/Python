@@ -30,7 +30,8 @@ class ExtraWorks:
             ExtraWorks.__run_requirement_scripts(requirement)
         except FileNotFoundError as e:
             raise Exception(
-                "Either cmd is not found, or svn is not installed on the system. Please make sure both are present and are added to path. tortoisesvn link: https://tortoisesvn.net/downloads.html")
+                "Either cmd is not found, or svn is not installed on the system. Please make sure both are present "
+                "and are added to path. tortoisesvn link: https://tortoisesvn.net/downloads.html")
         except SvnException as e:
             raise Exception("An svn exception occurred. Does the given requirement exist?")
         return ExtraWorks.get_requirement_path(requirement)

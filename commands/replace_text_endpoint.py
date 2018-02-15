@@ -1,8 +1,8 @@
 from commands import replace_text
-from commands.base.command_base import CommandBase
+from commands.base.command_base import BaseCommand
 
 
-class ReplaceTextEndpoint(CommandBase):
+class ReplaceTextEndpoint(BaseCommand):
     desc = 'convert string in endpoint file to another string'
     usage = 'ReplaceTextInEndpointFile.py [filename/directory] [original string] [replacement string]'
     minArgNr = 3

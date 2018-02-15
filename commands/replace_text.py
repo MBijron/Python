@@ -1,9 +1,9 @@
 import pathlib
 import os
-from commands.base.command_base import CommandBase
+from commands.base.command_base import BaseCommand
 
 
-class ReplaceText(CommandBase):
+class ReplaceText(BaseCommand):
     __args = []
     desc = 'convert string in file to another string'
     usage = 'ReplaceTextInFile.py [filename/directory] [original string] [replacement string]'

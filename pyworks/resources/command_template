@@ -1,6 +1,7 @@
 from commands.base.command_parameter import CommandParameter
 from commands.base.middleware import Middleware
 from commands.base.command_base import CommandBase
+from typing import List
 
 
 class [NAME]Command (CommandBase):
@@ -13,7 +14,10 @@ class [NAME]Command (CommandBase):
     def main(self):
         pass
 
+    def _get_parameters(self) -> List[CommandParameter]:
+        return self.parameters
+
 
 # If the file is called directly (not imported) execute the command.
 # If not, create an instance of command, but don't execute it
-command = [NAME]Command (__name__ == "__main__")
+command = [NAME]Command(__name__ == "__main__")

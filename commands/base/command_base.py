@@ -1,28 +1,29 @@
 import sys
-from typing import Any
+from typing import Any, List
 
 from commands.base.command_parameter import CommandParameter
 
-class CommandBase:
+
+class BaseCommand:
     desc = 'No description available for this command'
     usage = 'No Usage available for this command'
-    settings: [str] = []
-    parameters: [CommandParameter] = [
-
-    ]
+    settings = []
 
     def main(self) -> None:
         raise NotImplementedError
 
+    def _get_parameters(self) -> List[CommandParameter]:
+        raise NotImplementedError
+
     def get_parameter_value(self, name) -> Any:
-        for parameter in self.parameters:
+        for parameter in self._get_parameters():
             if parameter.get_name() == name:
                 return parameter.get_value()
         raise Exception("No parameter with the name " + name + " was defined")
 
     def __check_parameter_business_rules(self) -> None:
         optional_encountered = False
-        for parameter in self.parameters:
+        for parameter in self._get_parameters():
             if parameter.is_optional():
                 optional_encountered = True
             elif optional_encountered:
@@ -45,14 +46,14 @@ class CommandBase:
                     self.__assign_next_parameter(parameter)
 
     def __assign_named_parameter(self, name, value) -> None:
-        for parameter in self.parameters:
+        for parameter in self._get_parameters():
             if parameter.get_name() == name:
                 parameter.set_value(value)
                 return
         raise Exception("No parameter with name " + name + " exists")
 
     def __assign_next_parameter(self, value) -> None:
-        for parameter in self.parameters:
+        for parameter in self._get_parameters():
             if not parameter.has_value():
                 parameter.set_value(value)
                 return
@@ -67,7 +68,7 @@ class CommandBase:
             raise Exception("- should be followed by a parameter name")
 
     def __check_parameter_values(self) -> None:
-        for parameter in self.parameters:
+        for parameter in self._get_parameters():
             if not parameter.check():
                 raise Exception("Parameter " + parameter.get_value() + " has the wrong value")
 

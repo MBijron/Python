@@ -1,13 +1,14 @@
+from typing import List
 from commands.base.command_parameter import CommandParameter
 from commands.base.middleware import Middleware
-from commands.base.command_base import CommandBase
+from commands.base.command_base import BaseCommand
 from pyworks.io.file import File
 from pyworks.io.path import Path
 from pyworks.resources.resource_handler import ResourceHandler
 from pyworks.utils.regex import Regex
 
 
-class CreateCommandCommand (CommandBase):
+class CreateCommandCommand (BaseCommand):
     desc = 'Create a python command'
     usage = 'CreateCommand [name] [description]'
     parameters = [
@@ -25,6 +26,9 @@ class CreateCommandCommand (CommandBase):
         File.copy(ResourceHandler.get_resource_path('command_template'), Path.combine(Path.get_script_path(), name + '.py'))
         Regex.replace_file(Path.combine(Path.get_script_path(), name + '.py'), r"\[NAME\]", name)
         Regex.replace_file(Path.combine(Path.get_script_path(), name + '.py'), r"\[DESCRIPTION\]", description)
+
+    def _get_parameters(self) -> List[CommandParameter]:
+        return self.parameters
 
 
 # If the file is called directly (not imported) execute the command.

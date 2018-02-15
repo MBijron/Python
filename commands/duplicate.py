@@ -1,8 +1,8 @@
 import shutil
-from commands.base.command_base import CommandBase
+from commands.base.command_base import BaseCommand
 
 
-class Duplicate(CommandBase):
+class Duplicate(BaseCommand):
     desc = 'Duplicate a file or folder'
     usage = 'DuplicateFile [file/folder] [new name]'
     minArgNr = 2

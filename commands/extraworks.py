@@ -1,10 +1,12 @@
-from commands.base.command_base import CommandBase
+from typing import List
+
+from commands.base.command_base import BaseCommand
 from commands.base.middleware import Middleware
 from commands.base.command_parameter import CommandParameter
 from pyworks.utils.extra_works import ExtraWorks
 
 
-class ExtraWorksCommand(CommandBase):
+class ExtraWorksCommand(BaseCommand):
     desc = 'Used to install/update extraworks packages'
     usage = 'extraworks'
     parameters = [
@@ -32,6 +34,9 @@ class ExtraWorksCommand(CommandBase):
                 print("Package is not installed and can't be uninstalled")
         else:
             print("Wrong argument given '" + action + "'. Use install or reinstall")
+
+    def _get_parameters(self) -> List[CommandParameter]:
+        return self.parameters
 
 
 # If the file is called directly (not imported) execute the command.

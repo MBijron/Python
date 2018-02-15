@@ -3,7 +3,7 @@ import unittest
 from pyworks.utils.regex import Regex
 
 
-class MyTestCase(unittest.TestCase):
+class TestRegex(unittest.TestCase):
     def test_match_string(self) -> None:
         self.assertTrue(Regex.match_string("dit is een tekst", "[is]{2}\s*\w+"))
         self.assertFalse(Regex.match_string("dit is een tekst", "^[is]{2}\s*\w+$"))
@@ -33,6 +33,15 @@ class MyTestCase(unittest.TestCase):
     def test_replace_files_with_filter(self) -> None:
         Regex.replace_files('testresources', "[is]{2}\s*\w+", "is geen", "cant_match_anything")
         self.assertFalse(Regex.match_file('testresources\\RegexMatchTest.txt', "is geen"))
+
+    def test_find_in_string_returns_correct_tuple(self) -> None:
+        result = (
+            "string",
+            "string",
+            "string"
+        )
+        self.assertEqual(result, Regex.find_in_string("lots of other text that does not matter string string string "
+                                                      "other things", ".*?(string) (string) (string).*?"))
 
 
 if __name__ == '__main__':

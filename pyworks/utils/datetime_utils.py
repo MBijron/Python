@@ -1,4 +1,5 @@
 from datetime import datetime, timedelta
+from typing import List
 
 
 class DateTimeUtil:
@@ -21,8 +22,8 @@ class DateTimeUtil:
         return datetime.strptime(string, DateTimeUtil.date_format)
 
     @staticmethod
-    def get_range(from_date, to_date) -> [ datetime ]:
-        range_array : [ datetime ] = []
+    def get_range(from_date, to_date) -> List[datetime]:
+        range_array: [datetime] = []
         dd = [from_date + timedelta(days=x) for x in range((to_date - from_date).days + 1)]
         for d in dd:
             range_array.append(d)

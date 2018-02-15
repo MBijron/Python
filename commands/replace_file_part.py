@@ -1,9 +1,9 @@
 import os
 import pathlib
-from commands.base.command_base import CommandBase
+from commands.base.command_base import BaseCommand
 
 
-class ReplaceFilePart(CommandBase):
+class ReplaceFilePart(BaseCommand):
     __args = []
     desc = 'change part of the filename for given replacement'
     usage = 'RenameFilePart.py [filename/directory] [original string] [replacement string]'

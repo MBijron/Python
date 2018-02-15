@@ -2,6 +2,7 @@ import pip
 import importlib
 import site
 
+
 class Packages:
     @staticmethod
     def install(package) -> None:

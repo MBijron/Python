@@ -3,7 +3,7 @@ import unittest
 from pyworks.io.file import File
 
 
-class MyTestCase(unittest.TestCase):
+class TestFile(unittest.TestCase):
     def test_readtext(self) -> None:
         self.assertEqual(File.read_text('testResources\\FileTest.txt'), 'Contents Of File\nSecond Line Of Content')
 

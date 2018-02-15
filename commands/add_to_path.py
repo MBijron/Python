@@ -1,14 +1,11 @@
 import os
-from commands.base.command_base import CommandBase
+from commands.base.command_base import BaseCommand
 from commands.base.middleware import Middleware
 
 
-class AddToPath(CommandBase):
+class AddToPath(BaseCommand):
     desc = 'Add folder to path variable'
     usage = 'AddToPath [path]'
-    minArgNr = 1
-    maxArgNr = 1
-    types = {1: Middleware.PATH}
 
     @staticmethod
     def _add_folder_to_path(folder) -> None:

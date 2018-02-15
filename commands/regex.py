@@ -1,8 +1,8 @@
-from commands.base.command_base import CommandBase
+from commands.base.command_base import BaseCommand
 from pyworks.utils.regex import Regex
 
 
-class RegexCommand(CommandBase):
+class RegexCommand(BaseCommand):
     desc = 'match regex in file or folder'
     usage = 'regex.py [filename/directory] [pattern] <filer>'
     minArgNr = 2
