@@ -18,7 +18,7 @@ class AddToPath(CommandBase):
 
     @staticmethod
     def _path_already_contains_folder(folder) -> None:
-        #TODO: Complete this method, it does not check anything at all!
+        # TODO: Complete this method, it does not check anything at all!
         path = os.environ["PATH"]
         for pathFolder in path.split(";"):
             print(pathFolder)

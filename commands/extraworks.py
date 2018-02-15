@@ -13,25 +13,25 @@ class ExtraWorksCommand(CommandBase):
     ]
 
     def main(self) -> None:
-        command = self.get_parameter_value("action")
+        action = self.get_parameter_value("action")
         data = self.get_parameter_value("data")
-        if command == "install":
+        if action == "install":
             print("Installing " + data)
             if not ExtraWorks.requirement_installed(data):
                 ExtraWorks.install_requirement(data)
             else:
                 print("Package " + data + " was installed already")
-        elif command == "reinstall":
+        elif action == "reinstall":
             print("Reinstalling " + data)
             ExtraWorks.install_requirement(data)
-        elif command == "uninstall":
+        elif action == "uninstall":
             print("Uninstalling " + data)
             if ExtraWorks.requirement_installed(data):
                 ExtraWorks.uninstall(data)
             else:
                 print("Package is not installed and can't be uninstalled")
         else:
-            print("Wrong argument given '" + command + "'. Use install or reinstall")
+            print("Wrong argument given '" + action + "'. Use install or reinstall")
 
 
 # If the file is called directly (not imported) execute the command.

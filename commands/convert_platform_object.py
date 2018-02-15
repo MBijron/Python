@@ -21,7 +21,7 @@ for matchNum, match in enumerate(matches):
         typeInputDefault = knownTypes[match.group(1)] if match.group(1) in knownTypes else match.group(1)
         type = input(typeInputText) or typeInputDefault
         name = input("Name : " + match.group(2) + " > ") or match.group(2)
-        output = "[DataMember(Name = \"" + re.sub(r"^(.)", lambda match: match.group(1).lower(), name) + "\")]\n"
+        output = "[DataMember(Name = \"" + re.sub(r"^(.)", lambda mtch: mtch.group(1).lower(), name) + "\")]\n"
         output += "[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]\n"
         output += "public " + type + " " + name + " { get; set; }\n\n"
         result += output
